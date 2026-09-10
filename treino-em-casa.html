@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Treino em Casa - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --day-tag: #1e3a8a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    /* Topo com Botão Voltar */
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back-btn {
+      background: none;
+      border: none;
+      color: var(--accent-blue);
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+    }
+
+    /* Container Principal */
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px 16px;
+    }
+
+    .page-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      color: #ffffff;
+    }
+
+    /* Grade de Treinos */
+    .workout-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
+    }
+
+    /* Cards de Treino */
+    .workout-card {
+      background-color: var(--bg-card);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      user-select: none;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
+    }
+
+    /* Efeito de Toque / Hover */
+    .workout-card:active {
+      transform: scale(0.97);
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+    }
+
+    @media (hover: hover) {
+      .workout-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent-blue);
+        box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2);
+      }
+    }
+
+    .day-tag {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background-color: var(--day-tag);
+      color: var(--accent-blue);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      border: 1px solid #2563eb;
+      z-index: 2;
+    }
+
+    .workout-thumb {
+      width: 100%;
+      height: 160px;
+      background-color: #0d1117;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    .workout-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      pointer-events: none;
+    }
+
+    .workout-info {
+      padding: 12px;
+      text-align: center;
+    }
+
+    .workout-title {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--accent-blue);
+    }
+
+    @media (max-width: 380px) {
+      .workout-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .workout-thumb {
+        height: 130px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topo com Botão Voltar -->
+  <header>
+    <a href="index.html" class="back-btn">
+      ‹ Voltar
+    </a>
+  </header>
+
+  <main>
+    <h1 class="page-title">Escolha o Treino do Dia</h1>
+
+    <!-- Grade com as Opções de Treino -->
+    <div class="workout-grid">
+
+      <!-- ALONGAMENTO -->
+      <a href="#alongamento" class="workout-card">
+        <span class="day-tag">Segunda</span>
+        <div class="workout-thumb">
+          <img src="alongamentos.jpeg" alt="Alongamento" />
+        </div>
+        <div class="workout-info">
+          <div class="workout-title">Alongamento</div>
+        </div>
+      </a>
+
+      <!-- ABDOMINAL -->
+      <a href="#abdominal" class="workout-card">
+        <span class="day-tag">Terça</span>
+        <div class="workout-thumb">
+          <img src="aabdominal.jpeg" alt="Abdominal" />
+        </div>
+        <div class="workout-info">
+          <div class="workout-title">Abdominal</div>
+        </div>
+      </a>
+
+      <!-- PERNAS -->
+      <a href="#pernas" class="workout-card">
+        <span class="day-tag">Quarta</span>
+        <div class="workout-thumb">
+          <img src="pernas.jpeg" alt="Pernas" />
+        </div>
+        <div class="workout-info">
+          <div class="workout-title">Pernas</div>
+        </div>
+      </a>
+
+      <!-- YOGA -->
+      <a href="#yoga" class="workout-card">
+        <span class="day-tag">Quinta</span>
+        <div class="workout-thumb">
+          <img src="yoga.jpeg" alt="Yoga" />
+        </div>
+        <div class="workout-info">
+          <div class="workout-title">Yoga</div>
+        </div>
+      </a>
+
+      <!-- HIIT -->
+      <a href="#hiit" class="workout-card">
+        <span class="day-tag">Sexta</span>
+        <div class="workout-thumb">
+          <img src="hiit.jpeg" alt="HIIT" />
+        </div>
+        <div class="workout-info">
+          <div class="workout-title">HIIT</div>
+        </div>
+      </a>
+
+    </div>
+  </main>
+
+</body>
+</html>
