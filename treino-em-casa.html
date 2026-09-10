@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Treino em Casa - InfoApp</title>
+  <title>Entraînement à la Maison - InfoApp</title>
   <style>
     :root {
       --bg-principal: #0d1117;
@@ -33,7 +33,7 @@
       padding-bottom: 40px;
     }
 
-    /* Topo com Botão Voltar */
+    /* En-tête avec bouton Retour */
     header {
       width: 100%;
       max-width: 900px;
@@ -60,7 +60,7 @@
       text-decoration: none;
     }
 
-    /* Container Principal */
+    /* Conteneur principal */
     main {
       width: 100%;
       max-width: 900px;
@@ -74,14 +74,14 @@
       color: #ffffff;
     }
 
-    /* Grade de Treinos */
+    /* Grille d'entraînements */
     .workout-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
       gap: 16px;
     }
 
-    /* Cards de Treino */
+    /* Cartes d'entraînement */
     .workout-card {
       background-color: var(--bg-card);
       border-radius: 14px;
@@ -97,7 +97,7 @@
       cursor: pointer;
     }
 
-    /* Efeito de Toque / Hover */
+    /* Effet tactile et survol */
     .workout-card:active {
       transform: scale(0.97);
       border-color: var(--accent-blue);
@@ -169,71 +169,71 @@
 </head>
 <body>
 
-  <!-- Topo com Botão Voltar -->
+  <!-- En-tête avec bouton Retour -->
   <header>
     <a href="index.html" class="back-btn">
-      ‹ Voltar
+      ‹ Retour
     </a>
   </header>
 
   <main>
-    <h1 class="page-title">Escolha o Treino do Dia</h1>
+    <h1 class="page-title">Choisissez la séance du jour</h1>
 
-    <!-- Grade com as Opções de Treino -->
+    <!-- Grille des options d'entraînement -->
     <div class="workout-grid">
 
-      <!-- ALONGAMENTO -->
+      <!-- ÉTIREMENTS & MOBILITÉ -->
       <a href="alongamento.html" class="workout-card">
-        <span class="day-tag">Segunda</span>
+        <span class="day-tag">Lundi</span>
         <div class="workout-thumb">
-          <img src="alongamentos.jpeg" alt="Alongamento" />
+          <img src="alongamentos.jpeg" alt="Étirements & Mobilité" />
         </div>
         <div class="workout-info">
-          <div class="workout-title">Alongamento</div>
+          <div class="workout-title">Étirements & Mobilité</div>
         </div>
       </a>
 
-      <!-- ABDOMINAL -->
+      <!-- ABDOMINAUX & GAINAGE -->
       <a href="abdominal.html" class="workout-card">
-        <span class="day-tag">Terça</span>
+        <span class="day-tag">Mardi</span>
         <div class="workout-thumb">
-          <img src="aabdominal.jpeg" alt="Abdominal" />
+          <img src="aabdominal.jpeg" alt="Abdominaux & Gainage" />
         </div>
         <div class="workout-info">
-          <div class="workout-title">Abdominal</div>
+          <div class="workout-title">Abdominaux & Gainage</div>
         </div>
       </a>
 
-      <!-- PERNAS -->
+      <!-- CUISSES & FESSIERS -->
       <a href="pernas.html" class="workout-card">
-        <span class="day-tag">Quarta</span>
+        <span class="day-tag">Mercredi</span>
         <div class="workout-thumb">
-          <img src="pernas.jpeg" alt="Pernas" />
+          <img src="pernas.jpeg" alt="Cuisses & Fessiers" />
         </div>
         <div class="workout-info">
-          <div class="workout-title">Pernas</div>
+          <div class="workout-title">Cuisses & Fessiers</div>
         </div>
       </a>
 
-      <!-- YOGA -->
+      <!-- YOGA & RESTAURATION -->
       <a href="yoga.html" class="workout-card">
-        <span class="day-tag">Quinta</span>
+        <span class="day-tag">Jeudi</span>
         <div class="workout-thumb">
-          <img src="yoga.jpeg" alt="Yoga" />
+          <img src="yoga.jpeg" alt="Yoga & Restauration" />
         </div>
         <div class="workout-info">
-          <div class="workout-title">Yoga</div>
+          <div class="workout-title">Yoga & Restauration</div>
         </div>
       </a>
 
-      <!-- HIIT -->
+      <!-- HIIT CARDIO -->
       <a href="hiit.html" class="workout-card">
-        <span class="day-tag">Sexta</span>
+        <span class="day-tag">Vendredi</span>
         <div class="workout-thumb">
-          <img src="hiit.jpeg" alt="HIIT" />
+          <img src="hiit.jpeg" alt="HIIT Cardio" />
         </div>
         <div class="workout-info">
-          <div class="workout-title">HIIT</div>
+          <div class="workout-title">HIIT Cardio</div>
         </div>
       </a>
 

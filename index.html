@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="fr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -20,7 +20,7 @@
       margin: 0;
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      -webkit-tap-highlight-color: transparent; /* Remove o destaque azul nativo ao tocar */
+      -webkit-tap-highlight-color: transparent; /* Supprime le surlignage bleu au toucher */
     }
 
     body {
@@ -33,7 +33,7 @@
       padding-bottom: 40px;
     }
 
-    /* Topo do InfoApp */
+    /* En-tête */
     header {
       width: 100%;
       max-width: 900px;
@@ -65,14 +65,14 @@
       padding: 4px;
     }
 
-    /* Container Principal */
+    /* Conteneur principal */
     main {
       width: 100%;
       max-width: 900px;
       padding: 16px;
     }
 
-    /* Banner Principal com Imagem */
+    /* Bannière principale */
     .banner-container {
       width: 100%;
       border-radius: 16px;
@@ -90,7 +90,7 @@
       object-fit: cover;
     }
 
-    /* Grade de Módulos */
+    /* Grille des modules */
     .section-title {
       font-size: 1rem;
       margin-bottom: 12px;
@@ -106,7 +106,7 @@
       gap: 16px;
     }
 
-    /* Cards de Módulos - Interatividade e Toque */
+    /* Cartes des modules */
     .module-card {
       background-color: var(--bg-card);
       border-radius: 14px;
@@ -121,14 +121,13 @@
       cursor: pointer;
     }
 
-    /* Efeito de Toque (Mobile First & Desktop Click) */
+    /* Effet tactile et clic */
     .module-card:active {
       transform: scale(0.97);
       border-color: var(--accent-blue);
       box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
     }
 
-    /* Suporte a Hover exclusivo para computadores (com mouse) */
     @media (hover: hover) {
       .module-card:hover {
         transform: translateY(-4px);
@@ -165,7 +164,7 @@
       font-size: 0.95rem;
     }
 
-    /* Módulo em Destaque */
+    /* Module à la une */
     .module-card.offer-card {
       border: 2px solid var(--offer-gold);
       position: relative;
@@ -199,7 +198,7 @@
       color: var(--offer-gold);
     }
 
-    /* Ajuste fino para telas menores que 380px */
+    /* Ajustement pour très petits écrans */
     @media (max-width: 380px) {
       .modules-grid {
         grid-template-columns: 1fr 1fr;
@@ -219,25 +218,27 @@
     <div class="brand">
       <span>PROTOCOLE MPH</span>
     </div>
-    <button class="icon-btn" aria-label="Notificações">🔔</button>
+    <button class="icon-btn" aria-label="Notifications">🔔</button>
   </header>
 
-  <!-- Conteúdo Principal -->
+  <!-- Contenu Principal -->
   <main>
 
-    <!-- Banner Principal -->
+    <!-- Bannière Principale -->
     <div class="banner-container">
       <img src="Gemini_Generated_Image_wmg5zfwmg5zfwmg5.jfif" alt="Bienvenue ! Protocole MPH" class="banner-img" />
     </div>
 
-    <div class="section-title">Módulos</div>
+    <div class="section-header">
+      <div class="section-title">Modules</div>
+    </div>
 
-    <!-- Grade de Conteúdos -->
+    <!-- Grille de Contenus -->
     <div class="modules-grid">
 
-      <!-- MÓDULO EM DESTAQUE (NOVO) -->
+      <!-- MODULE À LA UNE -->
       <a href="#protocole-mph" class="module-card offer-card">
-        <span class="offer-tag">Destaque</span>
+        <span class="offer-tag">À LA UNE</span>
         <div class="module-thumb">
           <img src="Troque_escrito_por_Protocole_MPH_2K_20260909213032.jpeg" alt="Protocole MPH" />
         </div>
@@ -246,50 +247,53 @@
         </div>
       </a>
 
-      <!-- MÓDULO DE TREINO (AGORA NORMAL) -->
+      <!-- MODULE ENTRAÎNEMENT À LA MAISON -->
       <a href="treino-em-casa.html" class="module-card">
         <div class="module-thumb">
-          <img src="treino em casa.jpeg" alt="Treino em Casa" />
+          <img src="treino em casa.jpeg" alt="Entraînement à la Maison" />
         </div>
         <div class="module-info">
-          <div class="module-title">Treino em Casa</div>
+          <div class="module-title">Entraînement à la Maison</div>
         </div>
       </a>
 
-      <!-- OUTROS MÓDULOS -->
+      <!-- MODULE VOTRE CORPS -->
       <a href="votre-corps.html" class="module-card">
         <div class="module-thumb">
-          <img src="corpo.jpeg" alt="Seu Corpo" />
+          <img src="corpo.jpeg" alt="Votre Corps" />
         </div>
         <div class="module-info">
-          <div class="module-title">Seu Corpo</div>
+          <div class="module-title">Votre Corps</div>
         </div>
       </a>
 
-      <a href="#alimentacao" class="module-card">
+      <!-- MODULE ALIMENTATION -->
+      <a href="#alimentation" class="module-card">
         <div class="module-thumb">
-          <img src="alimentação.jpeg" alt="Alimentação" />
+          <img src="alimentação.jpeg" alt="Alimentation" />
         </div>
         <div class="module-info">
-          <div class="module-title">Alimentação</div>
+          <div class="module-title">Alimentation</div>
         </div>
       </a>
 
-      <a href="#movimento" class="module-card">
+      <!-- MODULE MOBILITÉ & MOUVEMENT -->
+      <a href="#mouvement" class="module-card">
         <div class="module-thumb">
-          <img src="movimento.jpeg" alt="Movimento" />
+          <img src="movimento.jpeg" alt="Mobilité & Mouvement" />
         </div>
         <div class="module-info">
-          <div class="module-title">Movimento</div>
+          <div class="module-title">Mobilité & Mouvement</div>
         </div>
       </a>
 
-      <a href="#mentalidade" class="module-card">
+      <!-- MODULE MENTAL & MOTIVATION -->
+      <a href="#mental" class="module-card">
         <div class="module-thumb">
-          <img src="mentalidade.jpeg" alt="Mentalidade" />
+          <img src="mentalidade.jpeg" alt="Mental & Motivation" />
         </div>
         <div class="module-info">
-          <div class="module-title">Mentalidade</div>
+          <div class="module-title">Mental & Motivation</div>
         </div>
       </a>
 
