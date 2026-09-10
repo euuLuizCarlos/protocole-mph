@@ -1,461 +1,248 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Le Protocole MPH</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <title>InfoApp - Protocole MPH</title>
   <style>
-    body { -webkit-tap-highlight-color: transparent; }
-    .module-card { transition: all 0.2s ease-in-out; }
-    .module-card:active { transform: scale(0.98); }
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --offer-gold: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    /* Topo do InfoApp */
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .brand {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Container Principal */
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 24px 16px;
+    }
+
+    /* Banner Principal com Imagem */
+    .banner-container {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      margin-bottom: 32px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--border-color);
+      background-color: var(--bg-card);
+    }
+
+    .banner-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Grade de Módulos */
+    .section-title {
+      font-size: 1.1rem;
+      margin-bottom: 16px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .modules-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    /* Cards de Módulos */
+    .module-card {
+      background-color: var(--bg-card);
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .module-card:hover {
+      transform: translateY(-4px);
+      border-color: #3b82f6;
+      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+    }
+
+    .module-thumb {
+      width: 100%;
+      height: 180px;
+      background-color: #0d1117;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid var(--border-color);
+      overflow: hidden;
+    }
+
+    .module-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .module-info {
+      padding: 16px;
+      text-align: center;
+    }
+
+    .module-title {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    /* Módulo de Oferta Especial */
+    .module-card.offer-card {
+      border: 2px solid var(--offer-gold);
+      position: relative;
+    }
+
+    .module-card.offer-card:hover {
+      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.25);
+    }
+
+    .offer-tag {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: var(--offer-gold);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      z-index: 2;
+    }
+
+    .module-card.offer-card .module-title {
+      color: var(--offer-gold);
+    }
   </style>
 </head>
-<body class="bg-stone-100 text-stone-800 font-sans min-h-screen">
+<body>
 
-  <!-- Header -->
-  <header class="bg-white border-b border-stone-200 sticky top-0 z-20 shadow-sm">
-    <div class="max-w-md mx-auto p-4 flex items-center justify-between">
-      <div class="flex items-center gap-2">
-        <button id="back-btn" onclick="showModuleList()" class="hidden text-stone-600 p-1 hover:bg-stone-100 rounded-lg">
-          <i data-lucide="arrow-left" class="w-6 h-6"></i>
-        </button>
-        <div>
-          <h1 class="font-bold text-base text-stone-900 tracking-wide">LE PROTOCOLE MPH</h1>
-          <p class="text-[11px] text-stone-500">Guide Officiel & Programme</p>
-        </div>
-      </div>
-      <i data-lucide="book-open-check" class="w-5 h-5 text-amber-700"></i>
+  <!-- Topo -->
+  <header>
+    <div class="brand">
+      <span>INFOAPP</span>
     </div>
+    <div>🔔</div>
   </header>
 
-  <main class="max-w-md mx-auto p-4 pb-12">
+  <!-- Conteúdo Principal -->
+  <main>
 
-    <!-- VIEW 1: LISTA DE MÓDULOS -->
-    <div id="module-list-view" class="space-y-3">
-      <p class="text-xs font-semibold text-stone-500 uppercase tracking-wider px-1">Sommaire des Modules</p>
-
-      <!-- Welcome -->
-      <button onclick="openModule('mod-welcome')" class="module-card w-full text-left bg-white p-4 rounded-2xl border border-stone-200 shadow-sm flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 bg-amber-100 text-amber-800 rounded-xl font-bold text-xs">00</div>
-          <div>
-            <h3 class="font-bold text-sm text-stone-900">Module de Bienvenue</h3>
-            <p class="text-xs text-stone-500">La vérité sur votre corps</p>
-          </div>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-stone-400"></i>
-      </button>
-
-      <!-- Chapitre 1 -->
-      <button onclick="openModule('mod-cap1')" class="module-card w-full text-left bg-white p-4 rounded-2xl border border-stone-200 shadow-sm flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 bg-stone-100 text-stone-700 rounded-xl font-bold text-xs">01</div>
-          <div>
-            <h3 class="font-bold text-sm text-stone-900">Chapitre 1</h3>
-            <p class="text-xs text-stone-500">Le Mode de Préservation Hormonale (MPH)</p>
-          </div>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-stone-400"></i>
-      </button>
-
-      <!-- Chapitre 2 -->
-      <button onclick="openModule('mod-cap2')" class="module-card w-full text-left bg-white p-4 rounded-2xl border border-stone-200 shadow-sm flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 bg-stone-100 text-stone-700 rounded-xl font-bold text-xs">02</div>
-          <div>
-            <h3 class="font-bold text-sm text-stone-900">Chapitre 2</h3>
-            <p class="text-xs text-stone-500">Les Deux Bloqueurs Secrets</p>
-          </div>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-stone-400"></i>
-      </button>
-
-      <!-- Chapitre 3 -->
-      <button onclick="openModule('mod-cap3')" class="module-card w-full text-left bg-white p-4 rounded-2xl border border-stone-200 shadow-sm flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 bg-stone-100 text-stone-700 rounded-xl font-bold text-xs">03</div>
-          <div>
-            <h3 class="font-bold text-sm text-stone-900">Chapitre 3</h3>
-            <p class="text-xs text-stone-500">Le Secret du Gel des Japonaises</p>
-          </div>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-stone-400"></i>
-      </button>
-
-      <!-- Chapitre 4 -->
-      <button onclick="openModule('mod-cap4')" class="module-card w-full text-left bg-white p-4 rounded-2xl border border-stone-200 shadow-sm flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 bg-stone-100 text-stone-700 rounded-xl font-bold text-xs">04</div>
-          <div>
-            <h3 class="font-bold text-sm text-stone-900">Chapitre 4</h3>
-            <p class="text-xs text-stone-500">Identifier Votre Profil Hormonal</p>
-          </div>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-stone-400"></i>
-      </button>
-
-      <!-- Chapitre 5 -->
-      <button onclick="openModule('mod-cap5')" class="module-card w-full text-left bg-white p-4 rounded-2xl border border-amber-300 bg-amber-50/50 shadow-sm flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 bg-amber-600 text-white rounded-xl font-bold text-xs">05</div>
-          <div>
-            <h3 class="font-bold text-sm text-stone-900">Chapitre 5</h3>
-            <p class="text-xs text-amber-900 font-medium">Le Protocole Pratique MPH (Gels & Recettes)</p>
-          </div>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-amber-700"></i>
-      </button>
-
-      <!-- Chapitre 6 (Bonus 1) -->
-      <button onclick="openModule('mod-cap6')" class="module-card w-full text-left bg-white p-4 rounded-2xl border border-stone-200 shadow-sm flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 bg-emerald-100 text-emerald-800 rounded-xl font-bold text-xs">B1</div>
-          <div>
-            <h3 class="font-bold text-sm text-stone-900">Chapitre 6 (Bonus 1)</h3>
-            <p class="text-xs text-stone-500">Plan Détox Intestinale en 7 Jours</p>
-          </div>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-stone-400"></i>
-      </button>
-
-      <!-- Chapitre 7 (Bonus 2) -->
-      <button onclick="openModule('mod-cap7')" class="module-card w-full text-left bg-white p-4 rounded-2xl border border-stone-200 shadow-sm flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 bg-emerald-100 text-emerald-800 rounded-xl font-bold text-xs">B2</div>
-          <div>
-            <h3 class="font-bold text-sm text-stone-900">Chapitre 7 (Bonus 2)</h3>
-            <p class="text-xs text-stone-500">Thé des Japonaises Anti-Relâchement</p>
-          </div>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-stone-400"></i>
-      </button>
-
-      <!-- Chapitre 8 (Bonus 3) -->
-      <button onclick="openModule('mod-cap8')" class="module-card w-full text-left bg-white p-4 rounded-2xl border border-stone-200 shadow-sm flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 bg-emerald-100 text-emerald-800 rounded-xl font-bold text-xs">B3</div>
-          <div>
-            <h3 class="font-bold text-sm text-stone-900">Chapitre 8 (Bonus 3)</h3>
-            <p class="text-xs text-stone-500">Protocole Vitalité & Confiance</p>
-          </div>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-stone-400"></i>
-      </button>
-
-      <!-- Conclusion -->
-      <button onclick="openModule('mod-conclusion')" class="module-card w-full text-left bg-white p-4 rounded-2xl border border-stone-200 shadow-sm flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div class="p-2.5 bg-stone-100 text-stone-700 rounded-xl font-bold text-xs">FIN</div>
-          <div>
-            <h3 class="font-bold text-sm text-stone-900">Conclusion</h3>
-            <p class="text-xs text-stone-500">Faire la paix avec votre corps</p>
-          </div>
-        </div>
-        <i data-lucide="chevron-right" class="w-5 h-5 text-stone-400"></i>
-      </button>
+    <!-- Banner Principal -->
+    <div class="banner-container">
+      <img src="Gemini_Generated_Image_wmg5zfwmg5zfwmg5.jfif" alt="Bienvenue ! Protocole MPH" class="banner-img" />
     </div>
 
-    <!-- VIEW 2: CONTEÚDO DOS MÓDULOS -->
-    <div id="module-content-view" class="hidden">
-      
-      <!-- MODULE WELCOME -->
-      <article id="mod-welcome" class="module-content hidden bg-white p-5 rounded-2xl border border-stone-200 space-y-4 text-sm leading-relaxed">
-        <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">Module de Bienvenue</span>
-        <h2 class="text-lg font-bold text-stone-900">La Vérité Que Personne Ne Vous A Jamais Révélée Sur Votre Corps</h2>
-        <p>Si vous êtes arrivée jusqu'ici, il est très probable que vous portiez un poids qui dépasse largement le simple chiffre affiché sur la balance : le poids de la frustration, de la fatigue et cette sensation inconfortable de « lutter contre votre propre corps ».</p>
-        <p>Je veux que vous passiez un marché avec moi dès ces premières pages : <strong>laissez la culpabilité de côté.</strong></p>
-        <p>Pendant des années, l'industrie de la minceur vous a fait croire que si vous n'arriviez pas à perdre du poids, c'était à cause d'un manque de volonté, d'écarts alimentaires ou de la sédentarité. Mais la vérité est tout autre : vous n'avez pas échoué ; ce sont les méthodes traditionnelles qui ont échoué envers vous.</p>
-        <p>Au cours de plus de 20 ans de pratique clinique spécialisée dans la santé hormonale féminine, j'ai accompagné des milliers de femmes qui partageaient exactement votre histoire. Des femmes de 35, 45, 55 ans ou plus, qui mangeaient peu, coupaient les glucides, marchaient tous les jours et, malgré tout, voyaient leur tour de taille augmenter et leur poids stagner.</p>
-        <p>Votre corps n'est pas bloqué parce que vous avez commis des erreurs. Il est bloqué parce qu'il a activé un mécanisme biologique de défense ancien et puissant. Dans ce livre, vous allez comprendre exactement comment ce mécanisme fonctionne et comment le désactiver grâce à une combinaison simple, naturelle et parfaitement adaptée à votre organisme.</p>
-        <div class="p-4 bg-amber-50 border-l-4 border-amber-600 rounded-r-xl font-medium text-stone-800">
-          Bienvenue dans cette nouvelle étape, où vous cessez de combattre votre corps pour enfin faire équipe avec lui.
+    <div class="section-title">Módulos</div>
+
+    <!-- Grade de Conteúdos -->
+    <div class="modules-grid">
+
+      <!-- OFERTA PRINCIPAL -->
+      <a href="#oferta" class="module-card offer-card">
+        <span class="offer-tag">Destaque</span>
+        <div class="module-thumb">
+          <img src="treino em casa.jpeg" alt="A Nossa Oferta Única" />
         </div>
-      </article>
-
-      <!-- CHAPITRE 1 -->
-      <article id="mod-cap1" class="module-content hidden bg-white p-5 rounded-2xl border border-stone-200 space-y-4 text-sm leading-relaxed">
-        <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">Chapitre 1</span>
-        <h2 class="text-lg font-bold text-stone-900">Le Mode de Préservation Hormonale (MPH)</h2>
-        <p>Pour comprendre pourquoi la perte de poids devient si difficile à partir d'un certain stade de la vie, nous devons examiner les changements invisibles qui s'opèrent dans votre chimie interne.</p>
-        <p>À partir de 30 ou 35 ans, le corps féminin subit une reconfiguration hormonale naturelle. La production de progestérone chute progressivement, tandis que le taux de cortisol (l'hormone du stress) tend à grimper en raison des exigences du quotidien, du sommeil perturbé et des soucis de la vie. Lorsque la progestérone chute et que le cortisol augmente, votre cerveau reçoit un signal d'alerte permanent.</p>
-        
-        <h3 class="font-bold text-stone-900 text-base pt-2">L'Analogie de l'Ours Avant l'Hiver</h3>
-        <p>Imaginez le comportement d'un ours brun à l'automne. Lorsque la nature lui signale l'arrivée de l'hiver (une période de froid, de danger et de disette), son métabolisme ralentit drastiquement la brûlure des calories et se met à stocker le moindre gramme de graisse pour survivre à la tempête.</p>
-        <p>C'est exactement ce que fait votre organisme lorsqu'il entre en Mode de Préservation Hormonale (MPH). Pour votre cerveau primitif, la hausse du cortisol et la baisse de la progestérone ne signifient qu'une chose : danger imminent ou famine. En guise de réponse de survie, il verrouille l'accès aux cellules graisseuses et réduit la dépense énergétique au strict minimum.</p>
-
-        <h3 class="font-bold text-stone-900 text-base pt-2">Pourquoi les Efforts Traditionnels Aggravent la Situation ?</h3>
-        <p>Lorsque vous tentez de couper drastiquement vos calories ou de vous épuiser au sport, votre corps n'interprète pas cela comme une « volonté de mincir », mais comme la confirmation que la famine est arrivée :</p>
-        <ul class="list-disc pl-5 space-y-1">
-          <li><strong>Vous réduisez l'alimentation ?</strong> Le corps pense que la nourriture manque et s'agrippe encore plus à la graisse stockée.</li>
-          <li><strong>Vous vous épuisez au sport ?</strong> Le cortisol grimpe en flèche, renforçant le signal d'urgence.</li>
-        </ul>
-        <p class="font-semibold text-amber-800">Le secret pour débloquer la combustion des graisses n'est pas de forcer le corps à dépenser plus, mais de lui transmettre un message clair : le danger est passé.</p>
-      </article>
-
-      <!-- CHAPITRE 2 -->
-      <article id="mod-cap2" class="module-content hidden bg-white p-5 rounded-2xl border border-stone-200 space-y-4 text-sm leading-relaxed">
-        <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">Chapitre 2</span>
-        <h2 class="text-lg font-bold text-stone-900">Les Deux Bloqueurs Secrets</h2>
-        <p>Lorsque le Mode de Préservation Hormonale reste actif, il déclenche deux verrouillages métaboliques spécifiques :</p>
-        
-        <div class="p-4 bg-stone-50 border border-stone-200 rounded-xl space-y-3">
-          <div class="text-center font-bold text-stone-800 text-xs">Chute de Progestérone + Hausse de Cortisol</div>
-          <div class="text-center text-amber-700 font-bold">↓</div>
-          <div class="text-center font-bold text-amber-800 bg-amber-100 py-1 rounded-lg text-xs">Mode de Préservation Hormonale (MPH)</div>
-          <div class="grid grid-cols-2 gap-2 text-xs pt-2">
-            <div class="p-2 bg-white rounded border border-stone-200">
-              <strong>1. Inflammation Intestinale & Leptine :</strong> Le cerveau ne ressent plus la satiété.
-            </div>
-            <div class="p-2 bg-white rounded border border-stone-200">
-              <strong>2. Résistance à l'Insuline :</strong> Stockage ciblé de graisse sur le ventre.
-            </div>
-          </div>
+        <div class="module-info">
+          <div class="module-title">A Nossa Oferta Única</div>
         </div>
+      </a>
 
-        <p><strong>1. Inflammation Intestinale Chronique et Blocage de la Leptine :</strong> Le stress hormonal continu altère la muqueuse intestinale, provoquant une micro-inflammation qui bloque la leptine (l'hormone de la satiété). Sans ce signal transmis au cerveau, vous continuez d'avoir faim même après un repas complet, ce qui génère des envies irrépressibles de sucre et des ballonnements quotidiens.</p>
-        <p><strong>2. Résistance Adaptative à l'Insuline :</strong> Vos cellules se mettent à ignorer l'action de l'insuline. Le sucre consommé n'est plus converti en énergie rapide (ce qui provoque une fatigue permanente), mais est directement redirigé vers les réserves de graisse viscérale (ventre, taille, bras et dos).</p>
-      </article>
-
-      <!-- CHAPITRE 3 -->
-      <article id="mod-cap3" class="module-content hidden bg-white p-5 rounded-2xl border border-stone-200 space-y-4 text-sm leading-relaxed">
-        <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">Chapitre 3</span>
-        <h2 class="text-lg font-bold text-stone-900">Le Secret du Gel des Japonaises</h2>
-        <p>La solution pour débloquer le métabolisme féminin a été observée au sein de cultures orientales où les femmes conservent une taille fine, un poids stable et une peau ferme après 50, 60 ou 70 ans : <strong>l'usage stratégique d'un composé mucilagineux naturel issu des graines de chia réhydratées.</strong></p>
-        <p>Lorsqu'elle est correctement hydratée dans de l'eau ou des infusions médicinales, la graine de chia forme un gel dense qui agit en trois étapes :</p>
-        
-        <div class="space-y-2">
-          <div class="p-3 bg-amber-50 rounded-xl border border-amber-200">
-            <strong>1. Désinflammation Intestinale :</strong> Tapisse la muqueuse, apaise l'inflammation et débloque les récepteurs de leptine.
-          </div>
-          <div class="p-3 bg-amber-50 rounded-xl border border-amber-200">
-            <strong>2. Ralentissement de la Vidange Gastrique :</strong> Ocuppe de l'espace dans l'estomac, réduit la ghréline et prolonge la satiété jusqu'à 6 heures.
-          </div>
-          <div class="p-3 bg-amber-50 rounded-xl border border-amber-200">
-            <strong>3. Lissage des Pics d'Insuline :</strong> Ralentit l'absorption des glucides, évitant les pics de glycémie et forçant l'organisme à puiser dans la graisse viscérale.
-          </div>
+      <!-- MÓDULOS ADICIONAIS -->
+      <a href="#corpo" class="module-card">
+        <div class="module-thumb">
+          <img src="corpo.jpeg" alt="Seu Corpo" />
         </div>
-      </article>
-
-      <!-- CHAPITRE 4 -->
-      <article id="mod-cap4" class="module-content hidden bg-white p-5 rounded-2xl border border-stone-200 space-y-4 text-sm leading-relaxed">
-        <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">Chapitre 4</span>
-        <h2 class="text-lg font-bold text-stone-900">Identifier Votre Profil Hormonal</h2>
-        <p>Il n'existe pas de recette universelle. Pour obtenir des résultats ciblés, identifiez votre profil ci-dessous :</p>
-
-        <div class="space-y-3">
-          <div class="p-4 bg-stone-50 rounded-2xl border border-stone-200">
-            <h3 class="font-bold text-amber-800 text-base">PROFIL A : Cortisol Dominant</h3>
-            <p class="text-xs text-stone-500 mb-1">Blocage par le Stress</p>
-            <p class="text-xs"><strong>Symptômes :</strong> Ballonnements abdominaux dès le matin, pulsions sucrées l'après-midi, sommeil agité ou nervosité.</p>
-          </div>
-
-          <div class="p-4 bg-stone-50 rounded-2xl border border-stone-200">
-            <h3 class="font-bold text-amber-800 text-base">PROFIL B : Insulinique Adaptatif</h3>
-            <p class="text-xs text-stone-500 mb-1">Résistance Métabolique</p>
-            <p class="text-xs"><strong>Symptômes :</strong> Graisse localisée principalement sur le ventre, fatigue écrasante après les repas, extrême difficulté à perdre du poids.</p>
-          </div>
-
-          <div class="p-4 bg-stone-50 rounded-2xl border border-stone-200">
-            <h3 class="font-bold text-amber-800 text-base">PROFIL C : Progestérone Basse</h3>
-            <p class="text-xs text-stone-500 mb-1">Transition Minceur / Post-35 ans</p>
-            <p class="text-xs"><strong>Symptômes :</strong> Bouffées de chaleur, rétention d'eau importante, relâchement cutané et métabolisme au ralenti.</p>
-          </div>
+        <div class="module-info">
+          <div class="module-title">Seu Corpo</div>
         </div>
-      </article>
+      </a>
 
-      <!-- CHAPITRE 5 -->
-      <article id="mod-cap5" class="module-content hidden bg-white p-5 rounded-2xl border border-stone-200 space-y-4 text-sm leading-relaxed">
-        <span class="text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-full">Chapitre 5</span>
-        <h2 class="text-lg font-bold text-stone-900">LE PROTOCOLE PRATIQUE MPH</h2>
-        <p>Chronogramme Quotidien des Combinaisons et Recettes par Moment de la Journée :</p>
-
-        <!-- Timeline -->
-        <div class="space-y-4">
-          <!-- Matin -->
-          <div class="p-4 bg-stone-50 rounded-2xl border border-stone-200 space-y-2">
-            <span class="text-xs font-bold bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded">1. MATIN (À jeun)</span>
-            <p class="text-xs font-medium text-stone-600">Action : Drainage & Réveil Intestinal</p>
-            
-            <div class="space-y-2 pt-1 text-xs">
-              <div class="p-2.5 bg-white rounded-xl border border-stone-200">
-                <strong>Option A (Classique) — Gel Drainant Citron & Lin :</strong><br>
-                <em>Ingrédients :</em> 150 ml d'eau tiède + 1 c. à s. de graines de chia + 1 c. à c. de graines de lin dorées moulues + 5 gouttes de jus de citron.<br>
-                <em>Préparation :</em> Laissez gonfler le chia dans l'eau pendant 15 min. Ajoutez le lin et le citron juste avant de consommer.<br>
-                <em>Utilisation :</em> À jeun au réveil. Buvez 300 ml d'eau pure 15 min après.
-              </div>
-              <div class="p-2.5 bg-white rounded-xl border border-stone-200">
-                <strong>Option B (Rétention Forte) — Gel Thermo-Drainant Hibiscus :</strong><br>
-                <em>Ingrédients :</em> 150 ml d'infusion concentrée d'hibiscus (froide) + 1 c. à s. de chia + 1 pincée de gingembre en poudre.<br>
-                <em>Préparation :</em> Hydratez le chia dans l'infusion froide pendant 20 min. Ajoutez le gingembre à la fin.
-              </div>
-            </div>
-          </div>
-
-          <!-- Midi -->
-          <div class="p-4 bg-stone-50 rounded-2xl border border-stone-200 space-y-2">
-            <span class="text-xs font-bold bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded">2. AVANT LE DÉJEUNER</span>
-            <p class="text-xs font-medium text-stone-600">Action : Blocage du Pic d'Insuline & Satiété</p>
-            
-            <div class="space-y-2 pt-1 text-xs">
-              <div class="p-2.5 bg-white rounded-xl border border-stone-200">
-                <strong>Option A (Classique) — Gel Anti-Pic Vinaigre de Cidre :</strong><br>
-                <em>Ingrédients :</em> 150 ml d'eau tiède + 1 c. à s. de chia + 1 c. à c. de vinaigre de cidre bio non filtré.<br>
-                <em>Préparation :</em> Laissez reposer 20 min. Incorporez le vinaigre au moment de boire.<br>
-                <em>Utilisation :</em> Consommer 20 min exactes avant la première bouchée.
-              </div>
-              <div class="p-2.5 bg-white rounded-xl border border-stone-200">
-                <strong>Option B (Digestion Lente) — Gel Digestif Menthe :</strong><br>
-                <em>Ingrédients :</em> 150 ml d'infusion de menthe tiède + 1 c. à s. de chia + 3 gouttes d'extrait de propolis.
-              </div>
-            </div>
-          </div>
-
-          <!-- Après-midi -->
-          <div class="p-4 bg-stone-50 rounded-2xl border border-stone-200 space-y-2">
-            <span class="text-xs font-bold bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded">3. APRÈS-MIDI (16h - 17h)</span>
-            <p class="text-xs font-medium text-stone-600">Action : Contrôle du Cortisol & Pulsions</p>
-            
-            <div class="space-y-2 pt-1 text-xs">
-              <div class="p-2.5 bg-white rounded-xl border border-stone-200">
-                <strong>Option A (Classique) — Gel Apaisant Camomille & Cannelle :</strong><br>
-                <em>Ingrédients :</em> 150 ml d'infusion de camomille tiède + 1 c. à s. de chia + 1 pincée de cannelle.<br>
-                <em>Utilisation :</em> Entre 16h et 17h pour apaiser le système nerveux.
-              </div>
-              <div class="p-2.5 bg-white rounded-xl border border-stone-200">
-                <strong>Option B (Anxiété Forte) — Gel Passion & Cacao :</strong><br>
-                <em>Ingrédients :</em> 100 ml d'eau + 50 ml de jus de maracuja pur + 1 c. à s. de chia + 1 c. à c. de cacao 100%.
-              </div>
-            </div>
-          </div>
-
-          <!-- Soir -->
-          <div class="p-4 bg-stone-50 rounded-2xl border border-stone-200 space-y-2">
-            <span class="text-xs font-bold bg-amber-100 text-amber-800 px-2.5 py-0.5 rounded">4. SOIR</span>
-            <p class="text-xs font-medium text-stone-600">Action : Réparation Digestive & Sommeil</p>
-            
-            <div class="p-2.5 bg-white rounded-xl border border-stone-200 text-xs">
-              <strong>Infusion Réparatrice Gut-Calm :</strong><br>
-              <em>Ingrédients :</em> 200 ml d'eau + 1 c. à c. de graines de fenouil + 1 c. à c. de verveine ou citronnelle <strong>(Sans chia)</strong>.<br>
-              <em>Préparation :</em> Infusez 8 min, buvez tiède 30 à 45 min avant de vous coucher.
-            </div>
-          </div>
-
-          <!-- Ajustements -->
-          <div class="p-4 bg-amber-50 rounded-2xl border border-amber-200 text-xs space-y-1">
-            <p class="font-bold text-amber-900">Ajustement Prioritaire Selon Votre Profil :</p>
-            <p>• <strong>Profil A :</strong> Priorité absolue sur le Gel de l'Après-midi et l'Infusion du Soir.</p>
-            <p>• <strong>Profil B :</strong> Priorité absolue sur le Gel Avant-Déjeuner (au vinaigre).</p>
-            <p>• <strong>Profil C :</strong> Priorité sur le Gel Drainant du Matin (alterner avec hibiscus).</p>
-          </div>
+      <a href="#alimentacao" class="module-card">
+        <div class="module-thumb">
+          <img src="alimentação.jpeg" alt="Alimentação" />
         </div>
-      </article>
-
-      <!-- CHAPITRE 6 -->
-      <article id="mod-cap6" class="module-content hidden bg-white p-5 rounded-2xl border border-stone-200 space-y-4 text-sm leading-relaxed">
-        <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full">Bonus 1</span>
-        <h2 class="text-lg font-bold text-stone-900">Plan de Réactivation et Détoxification Intestinale en 7 Jours</h2>
-        
-        <div class="p-4 bg-stone-50 rounded-2xl border border-stone-200 space-y-2 text-xs">
-          <p class="font-bold text-stone-900">Règles des 7 Jours :</p>
-          <p>• <strong>Éliminer :</strong> Sucre raffiné, édulcorants artificiels, produits ultra-transformés et boissons gazeuses.</p>
-          <p>• <strong>Augmenter :</strong> Eau (min. 35 ml par kg de poids) et légumes feuillus verts.</p>
-          <p>• <strong>Conserver :</strong> Votre protocole quotidien de Gel MPH sans interruption.</p>
+        <div class="module-info">
+          <div class="module-title">Alimentação</div>
         </div>
+      </a>
 
-        <h3 class="font-bold text-stone-900 text-sm">Programme Quotidien des 7 Jours :</h3>
-        <ul class="space-y-2 text-xs">
-          <li class="p-2.5 bg-stone-50 rounded-xl"><strong>Au réveil :</strong> 300 ml d'eau tiède avec le jus d'un demi-citron.</li>
-          <li class="p-2.5 bg-stone-50 rounded-xl"><strong>Matin :</strong> Dose de Gel MPH adaptée à votre profil.</li>
-          <li class="p-2.5 bg-stone-50 rounded-xl"><strong>Déjeuner :</strong> 50% légumes, 25% protéines maigres, 25% glucides complexes.</li>
-          <li class="p-2.5 bg-stone-50 rounded-xl"><strong>Après-midi :</strong> Infusion digestive (romarin ou menthe) + 1 poignée d'oléagineux.</li>
-          <li class="p-2.5 bg-stone-50 rounded-xl"><strong>Dîner :</strong> Repas léger (soupes de légumes avec protéines).</li>
-          <li class="p-2.5 bg-stone-50 rounded-xl"><strong>Avant de dormir :</strong> Infusion apaisante à la camomille.</li>
-        </ul>
-      </article>
-
-      <!-- CHAPITRE 7 -->
-      <article id="mod-cap7" class="module-content hidden bg-white p-5 rounded-2xl border border-stone-200 space-y-4 text-sm leading-relaxed">
-        <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full">Bonus 2</span>
-        <h2 class="text-lg font-bold text-stone-900">Le Thé des Japonaises Anti-Relâchement</h2>
-        <p>Pour préserver la fermeté et l'élasticité de la peau pendant la perte de graisse rapide :</p>
-        
-        <div class="p-4 bg-stone-50 rounded-2xl border border-stone-200 space-y-2 text-xs">
-          <p><strong>Ingrédients :</strong> 500 ml d'eau filtrée + 1 c. à s. de Thé Vert (Camellia sinensis) ou Bancha + 1 c. à c. de Prêle des champs + 1 morceau de zeste d'orange séché.</p>
-          <p><strong>Préparation :</strong> Portez l'eau à frémissement, coupez le feu, ajoutez les ingrédients, infusez à couvert pendant 8 à 10 min, filtrez.</p>
-          <p><strong>Consommation :</strong> En matinée ou début d'après-midi (éviter après 17h).</p>
+      <a href="#movimento" class="module-card">
+        <div class="module-thumb">
+          <img src="movimento.jpeg" alt="Movimento" />
         </div>
-      </article>
-
-      <!-- CHAPITRE 8 -->
-      <article id="mod-cap8" class="module-content hidden bg-white p-5 rounded-2xl border border-stone-200 space-y-4 text-sm leading-relaxed">
-        <span class="text-xs font-bold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-full">Bonus 3</span>
-        <h2 class="text-lg font-bold text-stone-900">Protocole Vitalité : Énergie, Libido et Confiance</h2>
-        
-        <div class="space-y-3 text-xs">
-          <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-            <strong>Le Rituel de la Lumière Matinale :</strong> Exposez vos yeux à la lumière naturelle du soleil pendant 10 à 15 minutes dans la première heure après le réveil pour calibrer le cortisol et optimiser la mélatonine.
-          </div>
-          <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-            <strong>Soutien Naturel :</strong> Intégrez de la Maca du Pérou (1 à 2 g par jour) ou des infusions de Ginseng à la cannelle pour lutter contre la fatigue chronique.
-          </div>
-          <div class="p-3 bg-stone-50 rounded-xl border border-stone-200">
-            <strong>Reconnexion Face au Miroir :</strong> Accordez-vous 2 minutes chaque jour pour vous observer bienveillamment. La métamorphose physique commence par le respect de son propre corps.
-          </div>
+        <div class="module-info">
+          <div class="module-title">Movimento</div>
         </div>
-      </article>
+      </a>
 
-      <!-- CONCLUSION -->
-      <article id="mod-conclusion" class="module-content hidden bg-white p-5 rounded-2xl border border-stone-200 space-y-4 text-sm leading-relaxed">
-        <span class="text-xs font-bold text-stone-700 bg-stone-100 px-2.5 py-1 rounded-full">Conclusion</span>
-        <h2 class="text-lg font-bold text-stone-900">Faire la Paix Avec Votre Corps</h2>
-        <p>Vous détenez désormais la feuille de route exacte pour désactiver le Mode de Préservation Hormonale et reprendre les commandes de votre santé.</p>
-        <p>La régularité l'emporte toujours sur l'intensité. Appliquez votre protocole du Gel MPH au quotidien, écoutez les signaux de votre organisme et laissez votre biologie travailler pour vous.</p>
-        <div class="p-4 bg-amber-50 border-l-4 border-amber-600 rounded-r-xl font-medium text-stone-800">
-          Votre corps ne cherchait qu'à vous protéger : maintenant qu'il sait que le danger est écarté, vos résultats arriveront de manière naturelle, sereine et durable.
+      <a href="#mentalidade" class="module-card">
+        <div class="module-thumb">
+          <img src="mentalidade.jpeg" alt="Mentalidade" />
         </div>
-      </article>
+        <div class="module-info">
+          <div class="module-title">Mentalidade</div>
+        </div>
+      </a>
 
     </div>
-
   </main>
 
-  <script>
-    lucide.createIcons();
-
-    function openModule(moduleId) {
-      // Hide module list
-      document.getElementById('module-list-view').classList.add('hidden');
-      
-      // Hide all module contents
-      const contents = document.querySelectorAll('.module-content');
-      contents.forEach(c => c.classList.add('hidden'));
-
-      // Show content view and specific module
-      document.getElementById('module-content-view').classList.remove('hidden');
-      document.getElementById(moduleId).classList.remove('hidden');
-
-      // Show back button
-      document.getElementById('back-btn').classList.remove('hidden');
-
-      // Scroll to top
-      window.scrollTo(0, 0);
-    }
-
-    function showModuleList() {
-      // Hide content view
-      document.getElementById('module-content-view').classList.add('hidden');
-      
-      // Show list view
-      document.getElementById('module-list-view').classList.remove('hidden');
-
-      // Hide back button
-      document.getElementById('back-btn').classList.add('hidden');
-
-      // Scroll to top
-      window.scrollTo(0, 0);
-    }
-  </script>
 </body>
 </html>
