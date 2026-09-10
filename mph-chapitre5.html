@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Chapitre 5 - Protocole Pratique MPH</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --accent-purple: #c084fc;
+      --accent-green: #22c55e;
+      --quiz-gold: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: var(--bg-principal); color: var(--text-main); display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding-bottom: 40px; }
+
+    header { width: 100%; max-width: 900px; background-color: var(--bg-card); padding: 16px 20px; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 10; }
+    .back-btn { color: var(--accent-blue); font-size: 1rem; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+
+    main { width: 100%; max-width: 900px; padding: 20px 16px; display: flex; flex-direction: column; gap: 20px; }
+
+    .intro-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 22px; border-left: 4px solid var(--accent-blue); display: flex; flex-direction: column; gap: 10px; }
+    .intro-tag { font-size: 0.75rem; font-weight: 800; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.5px; }
+    .intro-title { font-size: 1.4rem; font-weight: 800; color: #fff; line-height: 1.3; }
+
+    .content-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 18px; }
+    .text-p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+    .text-p strong { color: var(--text-main); }
+
+    .section-subtitle { font-size: 1.15rem; font-weight: 800; color: #fff; margin-top: 10px; border-bottom: 1px solid var(--border-color); padding-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+
+    .base-card { background-color: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 12px; padding: 18px; display: flex; flex-direction: column; gap: 10px; font-size: 0.92rem; line-height: 1.6; }
+
+    .profile-box { background-color: #0d1117; border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 16px; margin-top: 6px; }
+    .profile-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+    .profile-name { font-size: 1.1rem; font-weight: 800; color: #fff; }
+    .profile-badge { font-size: 0.72rem; font-weight: 800; padding: 4px 10px; border-radius: 6px; text-transform: uppercase; }
+
+    .recipe-item { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 10px; padding: 14px; display: flex; flex-direction: column; gap: 8px; }
+    .recipe-title { font-size: 0.98rem; font-weight: 700; color: #fff; display: flex; justify-content: space-between; align-items: center; }
+    .recipe-detail { font-size: 0.88rem; color: var(--text-muted); line-height: 1.6; }
+    .recipe-detail strong { color: var(--text-main); }
+
+    .table-container { width: 100%; overflow-x: auto; margin: 10px 0; border: 1px solid var(--border-color); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; }
+    th, td { padding: 12px 14px; border-bottom: 1px solid var(--border-color); }
+    th { background-color: #0d1117; color: #fff; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; }
+    tr:last-child td { border-bottom: none; }
+
+    .tip-card { background-color: rgba(245, 158, 11, 0.08); border-left: 4px solid var(--quiz-gold); padding: 14px 16px; border-radius: 8px; font-size: 0.9rem; color: var(--text-main); line-height: 1.6; }
+
+    .nav-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+    .next-btn, .prev-btn { color: var(--accent-blue); padding: 12px 18px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+    .next-btn { background-color: var(--accent-blue); color: #0d1117; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="protocole-mph.html" class="back-btn">‹ Sommaire MPH</a>
+  </header>
+
+  <main>
+    <div class="intro-card">
+      <span class="intro-tag">Chapitre 5</span>
+      <h1 class="intro-title">Le Protocole Pratique MPH & Recettes</h1>
+    </div>
+
+    <div class="content-card">
+      <p class="text-p">
+        La monotonie est le premier ennemi de la régularité. Pour vous garantir de suivre le protocole avec plaisir, nous avons créé des déclinaisons fonctionnelles du Gel MPH adaptées à chaque profil hormonal.
+      </p>
+
+      <p class="text-p">
+        Toutes les options conservent l'action mécanique du mucilage de chia, en faisant varier les principes actifs végétaux pour maximiser vos résultats.
+      </p>
+
+      <h2 class="section-subtitle">🥣 La Règle d'Or du Gel MPH</h2>
+      <div class="base-card">
+        <strong>Base Standard de Mucilage (Pour 1 portion) :</strong>
+        <br>• 1 cuillère à soupe bombée (15 g) de graines de chia entières
+        <br>• 150 ml d'eau filtrée tiède ou d'infusion tiède
+        <br><br>
+        <strong>Préparation Infaillible :</strong>
+        Mélangez vigoureusement les graines dans le liquide pendant 60 secondes. Patientez 5 minutes puis mélangez à nouveau pour éviter les grumeaux. Couvrez et laissez reposer au réfrigérateur au moins 20 minutes (ou toute la nuit).
+      </div>
+
+      <h2 class="section-subtitle" style="color: var(--accent-blue);">🟦 Options pour le Profil A (Cortisol Dominant)</h2>
+      <p class="text-p">Objectif : Apaiser le système nerveux, réguler le pic de cortisol de fin d'après-midi et stopper les envies de sucre.</p>
+
+      <div class="profile-box">
+        <div class="profile-header">
+          <span class="profile-name">Profil A — Créneau de 16h à 17h</span>
+          <span class="profile-badge" style="background-color: rgba(56, 189, 248, 0.2); color: var(--accent-blue);">3 Options</span>
+        </div>
+
+        <div class="recipe-item">
+          <div class="recipe-title">
+            <span>Option A1 : Gel Ansiolytique Camomille & Cannelle</span>
+            <span style="color: var(--accent-blue); font-size: 0.8rem;">Classique</span>
+          </div>
+          <div class="recipe-detail">
+            <strong>• Préparation :</strong> Hydratez la chia dans 150 ml de tisane de camomille ou mélisse tiède.<br>
+            <strong>• Activateurs :</strong> 5 gouttes d'extrait de propolis verte + 1 pincée de cannelle en poudre.<br>
+            <strong>• Action :</strong> La cannelle stabilise la glycémie pendant que la camomille apaise l'anxiété de fin de journée.
+          </div>
+        </div>
+
+        <div class="recipe-item">
+          <div class="recipe-title">
+            <span>Option A2 : Pudding Apaisant Cacao 100% & Fruit de la Passion</span>
+            <span style="color: var(--accent-blue); font-size: 0.8rem;">Gourmand</span>
+          </div>
+          <div class="recipe-detail">
+            <strong>• Préparation :</strong> Hydratez la chia dans 100 ml d'eau + 50 ml de jus pur de fruit de la passion (sans sucre).<br>
+            <strong>• Activateurs :</strong> 1 cuillère à café rase de cacao en poudre 100% + 2 gouttes d'extrait de vanille.<br>
+            <strong>• Action :</strong> Le magnésium du cacao combiné au fruit de la passion détend la musculature et comble l'envie de dessert.
+          </div>
+        </div>
+
+        <div class="recipe-item">
+          <div class="recipe-title">
+            <span>Option A3 : Gel Onctueux Lait d'Amande & Cardamome</span>
+            <span style="color: var(--accent-blue); font-size: 0.8rem;">Réconfort</span>
+          </div>
+          <div class="recipe-detail">
+            <strong>• Préparation :</strong> Hydratez la chia dans 150 ml de lait d'amande sans sucre tiède.<br>
+            <strong>• Activateurs :</strong> 1 pincée de cardamome en poudre + 1 pincée de muscade.<br>
+            <strong>• Action :</strong> Bonnes graisses et épices apaisantes pour ralentir le rythme cardiaque en douceur.
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-subtitle" style="color: var(--accent-purple);">🟪 Options pour le Profil B (Insulinique Adaptatif)</h2>
+      <p class="text-p">Objectif : Resensibiliser les cellules à l'insuline, aplatir le pic glycémique et déstocker la graisse abdominale.</p>
+
+      <div class="profile-box">
+        <div class="profile-header">
+          <span class="profile-name">Profil B — 20 Minutes Avant le Déjeuner</span>
+          <span class="profile-badge" style="background-color: rgba(192, 132, 252, 0.2); color: var(--accent-purple);">3 Options</span>
+        </div>
+
+        <div class="recipe-item">
+          <div class="recipe-title">
+            <span>Option B1 : Gel Anti-Pic Vinaigre de Cidre & Gingembre</span>
+            <span style="color: var(--accent-purple); font-size: 0.8rem;">Puissant</span>
+          </div>
+          <div class="recipe-detail">
+            <strong>• Préparation :</strong> Hydratez la chia dans 150 ml d'eau tiède.<br>
+            <strong>• Activateurs :</strong> 1 cuillère à café de vinaigre de cidre bio (non filtré) + 1/2 cuillère à café de gingembre râpé.<br>
+            <strong>• Action :</strong> L'acide acétique réduit l'absorption des amidons et active la combustion des graisses viscérales.
+          </div>
+        </div>
+
+        <div class="recipe-item">
+          <div class="recipe-title">
+            <span>Option B2 : Gel Digestif Menthe & Citron Vert</span>
+            <span style="color: var(--accent-purple); font-size: 0.8rem;">Frais</span>
+          </div>
+          <div class="recipe-detail">
+            <strong>• Préparation :</strong> Hydratez la chia dans 150 ml d'infusion de menthe concentrée.<br>
+            <strong>• Activateurs :</strong> 5 gouttes de jus de citron vert + 5 gouttes d'extrait de propolis.<br>
+            <strong>• Action :</strong> Stimule les enzymes digestives, évite les gonflements et prévient le coup de barre d'après-repas.
+          </div>
+        </div>
+
+        <div class="recipe-item">
+          <div class="recipe-title">
+            <span>Option B3 : Gel Thermogénique Thé Vert & Curcuma</span>
+            <span style="color: var(--accent-purple); font-size: 0.8rem;">Brûleur</span>
+          </div>
+          <div class="recipe-detail">
+            <strong>• Préparation :</strong> Hydratez la chia dans 150 ml de thé vert doux.<br>
+            <strong>• Activateurs :</strong> 1 pincée de curcuma + 1 pincée de poivre noir (pour activer la curcumine).<br>
+            <strong>• Action :</strong> Action anti-inflammatoire métabolique qui débloque l'action de l'insuline dans les tissus.
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-subtitle" style="color: var(--quiz-gold);">🟧 Options pour le Profil C (Progestérone Basse)</h2>
+      <p class="text-p">Objectif : Combattre la rétention d'eau, soutenir l'équilibre hormonal et décongestionner les tissus.</p>
+
+      <div class="profile-box">
+        <div class="profile-header">
+          <span class="profile-name">Profil C — À Jeun au Réveil</span>
+          <span class="profile-badge" style="background-color: rgba(245, 158, 11, 0.2); color: var(--quiz-gold);">3 Options</span>
+        </div>
+
+        <div class="recipe-item">
+          <div class="recipe-title">
+            <span>Option C1 : Gel Drainant Prêle & Graine de Lin</span>
+            <span style="color: var(--quiz-gold); font-size: 0.8rem;">Draineur</span>
+          </div>
+          <div class="recipe-detail">
+            <strong>• Préparation :</strong> Hydratez la chia dans 150 ml d'infusion de prêle tiède.<br>
+            <strong>• Activateurs :</strong> 1 cuillère à café de graines de lin dorées moulues + 3 gouttes de citron.<br>
+            <strong>• Action :</strong> Riche en silice organique et lignanes pour favoriser l'élimination des liquides retenus.
+          </div>
+        </div>
+
+        <div class="recipe-item">
+          <div class="recipe-title">
+            <span>Option C2 : Gel Anti-Gonflement Hibiscus & Fruits Rouges</span>
+            <span style="color: var(--quiz-gold); font-size: 0.8rem;">Antioxydant</span>
+          </div>
+          <div class="recipe-detail">
+            <strong>• Préparation :</strong> Hydratez la chia dans 150 ml de thé d'hibiscus froid.<br>
+            <strong>• Activateurs :</strong> 2 fraises ou 5 myrtilles écrasées.<br>
+            <strong>• Action :</strong> Bioflavonoïdes puissants qui renforcent les micro-vaisseaux et stimulent la circulation lymphatique.
+          </div>
+        </div>
+
+        <div class="recipe-item">
+          <div class="recipe-title">
+            <span>Option C3 : Gel Détox Pissenlit & Fenouil</span>
+            <span style="color: var(--quiz-gold); font-size: 0.8rem;">Détox Foie</span>
+          </div>
+          <div class="recipe-detail">
+            <strong>• Préparation :</strong> Hydratez la chia dans 150 ml d'infusion de pissenlit et fenouil.<br>
+            <strong>• Activateurs :</strong> 1 cuillère à café de zestes d'orange bio.<br>
+            <strong>• Action :</strong> Soutient le travail du foie dans l'élimination des métabolites hormonaux.
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-subtitle">📅 Rotation Hebdomadaire Suggérée</h2>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Jour</th>
+              <th>Profil A (Après-midi)</th>
+              <th>Profil B (Pré-Déjeuner)</th>
+              <th>Profil C (À Jeun)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Lundi</strong></td>
+              <td>A1 (Camomille)</td>
+              <td>B1 (Vinaigre/Gingembre)</td>
+              <td>C1 (Prêle/Lin)</td>
+            </tr>
+            <tr>
+              <td><strong>Mardi</strong></td>
+              <td>A2 (Cacao/Passion)</td>
+              <td>B2 (Menthe/Citron)</td>
+              <td>C2 (Hibiscus/Fruits)</td>
+            </tr>
+            <tr>
+              <td><strong>Mercredi</strong></td>
+              <td>A3 (Amande/Cardamome)</td>
+              <td>B3 (Thé Vert/Curcuma)</td>
+              <td>C3 (Pissenlit)</td>
+            </tr>
+            <tr>
+              <td><strong>Jeudi</strong></td>
+              <td>A1 (Camomille)</td>
+              <td>B1 (Vinaigre/Gingembre)</td>
+              <td>C1 (Prêle/Lin)</td>
+            </tr>
+            <tr>
+              <td><strong>Vendredi</strong></td>
+              <td>A2 (Cacao/Passion)</td>
+              <td>B2 (Menthe/Citron)</td>
+              <td>C2 (Hibiscus/Fruits)</td>
+            </tr>
+            <tr>
+              <td><strong>Samedi</strong></td>
+              <td>A3 (Amande/Cardamome)</td>
+              <td>B3 (Thé Vert/Curcuma)</td>
+              <td>C3 (Pissenlit)</td>
+            </tr>
+            <tr>
+              <td><strong>Dimanche</strong></td>
+              <td>Votre préférée</td>
+              <td>Votre préférée</td>
+              <td>Votre préférée</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tip-card">
+        💡 <strong>Astuce d'Organisation (Meal Prep) :</strong><br>
+        Vous pouvez préparer 3 petits pots en verre avec la chia sèche et les épices. Le soir, il vous suffit de verser l'infusion tiède par-dessus et de réserver au frais. Votre gel sera parfait au réveil !
+      </div>
+    </div>
+
+    <div class="nav-footer">
+      <a href="mph-chapitre4.html" class="prev-btn">‹ Précédent</a>
+      <a href="mph-bonus1.html" class="next-btn">Bonus 1 ›</a>
+    </div>
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Chapitre 4 - Protocole MPH</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --accent-purple: #c084fc;
+      --quiz-gold: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: var(--bg-principal); color: var(--text-main); display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding-bottom: 40px; }
+
+    header { width: 100%; max-width: 900px; background-color: var(--bg-card); padding: 16px 20px; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 10; }
+    .back-btn { color: var(--accent-blue); font-size: 1rem; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+
+    main { width: 100%; max-width: 900px; padding: 20px 16px; display: flex; flex-direction: column; gap: 20px; }
+
+    .intro-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 22px; border-left: 4px solid var(--quiz-gold); display: flex; flex-direction: column; gap: 10px; }
+    .intro-tag { font-size: 0.75rem; font-weight: 800; color: var(--quiz-gold); text-transform: uppercase; letter-spacing: 0.5px; }
+    .intro-title { font-size: 1.4rem; font-weight: 800; color: #fff; line-height: 1.3; }
+
+    .content-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 22px; display: flex; flex-direction: column; gap: 18px; }
+    .text-p { font-size: 0.95rem; color: var(--text-muted); line-height: 1.7; }
+    .text-p strong { color: var(--text-main); }
+
+    .table-container { width: 100%; overflow-x: auto; margin: 10px 0; border: 1px solid var(--border-color); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; text-align: left; font-size: 0.88rem; }
+    th, td { padding: 14px 16px; border-bottom: 1px solid var(--border-color); }
+    th { background-color: #0d1117; color: #fff; font-weight: 700; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 0.5px; }
+    tr:last-child td { border-bottom: none; }
+    td strong { color: #fff; display: block; margin-bottom: 2px; }
+
+    .nav-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+    .next-btn, .prev-btn { color: var(--accent-blue); padding: 12px 18px; border-radius: 8px; text-decoration: none; font-weight: 700; font-size: 0.9rem; }
+    .next-btn { background-color: var(--accent-blue); color: #0d1117; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="protocole-mph.html" class="back-btn">‹ Sommaire MPH</a>
+  </header>
+
+  <main>
+    <div class="intro-card">
+      <span class="intro-tag">Chapitre 4</span>
+      <h1 class="intro-title">Identifier Votre Profil Hormonal</h1>
+    </div>
+
+    <div class="content-card">
+      <p class="text-p">
+        Plus de 4 000 cas cliniques le démontrent : <strong>il n'existe pas de formule unique universelle pour la minceur féminine.</strong> Appliquer la mauvaise proportion ou consommer le gel au mauvais moment peut réduire considérablement l'efficacité du protocole.
+      </p>
+
+      <p class="text-p">
+        Pour découvrir la combinaison exacte de votre Gel MPH, analysez vos symptômes dominants et identifiez le profil qui vous correspond le mieux :
+      </p>
+
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Symptômes Prédominants</th>
+              <th>Profil Correspondant</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                • Ventre gonflé le matin<br>
+                • Envies de sucre en fin d'après-midi<br>
+                • Sommeil perturbé ou nervosité
+              </td>
+              <td>
+                <strong style="color: var(--accent-blue);">PROFIL A</strong>
+                Cortisol Dominant<br><em>(Blocage lié au Stress)</em>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                • Stockage concentré sur le ventre<br>
+                • Grande fatigue après les repas<br>
+                • Difficulté marquée à déstocker
+              </td>
+              <td>
+                <strong style="color: var(--accent-purple);">PROFIL B</strong>
+                Insulinique Adaptatif<br><em>(Résistance Métabolique)</em>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                • Bouffées de chaleur / humeur fluctuante<br>
+                • Rétention d'eau importante<br>
+                • Relâchement cutané / ralentissement
+              </td>
+              <td>
+                <strong style="color: var(--quiz-gold);">PROFIL C</strong>
+                Progestérone Basse<br><em>(Transition 35+ / Maturité)</em>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-p" style="margin-top: 10px;">
+        Dès que vous avez identifié votre profil principal, passez au chapitre suivant pour découvrir la recette exacte, le créneau horaire idéal et les activateurs spécifiques adaptés à votre quotidien.
+      </p>
+    </div>
+
+    <div class="nav-footer">
+      <a href="mph-chapitre3.html" class="prev-btn">‹ Précédent</a>
+      <a href="mph-chapitre5.html" class="next-btn">Chapitre 5 ›</a>
+    </div>
+  </main>
+
+</body>
+</html>
