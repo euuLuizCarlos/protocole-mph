@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Quiz : Alimentation Saine - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --accent-green: #22c55e;
+      --quiz-gold: #f59e0b;
+      --wrong-red: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back-btn {
+      color: var(--accent-blue);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px 16px;
+    }
+
+    .progress-container {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 10px;
+      background-color: #0d1117;
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 10%;
+      background: linear-gradient(90deg, var(--accent-green), var(--quiz-gold));
+      border-radius: 5px;
+      transition: width 0.3s ease;
+    }
+
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.5;
+    }
+
+    .option-btn {
+      background-color: #0d1117;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px;
+      color: var(--text-main);
+      font-size: 0.9rem;
+      text-align: left;
+      cursor: pointer;
+      width: 100%;
+      transition: border-color 0.15s;
+      margin-bottom: 10px;
+    }
+
+    .option-btn:hover {
+      border-color: var(--quiz-gold);
+    }
+
+    .score-summary-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--quiz-gold);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .score-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--quiz-gold);
+      margin-bottom: 6px;
+    }
+
+    .correction-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .correction-card.user-correct { border-left: 4px solid var(--accent-green); }
+    .correction-card.user-wrong { border-left: 4px solid var(--wrong-red); }
+
+    .highlight-box {
+      background-color: rgba(34, 197, 94, 0.1);
+      border-left: 3px solid var(--accent-green);
+      padding: 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+
+    .restart-btn {
+      background-color: var(--quiz-gold);
+      color: #0d1117;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="alimentation.html" class="back-btn">‹ Alimentation</a>
+  </header>
+
+  <main>
+    <div id="quiz-active-screen" style="display: flex; flex-direction: column; gap: 16px;">
+      <div class="progress-container">
+        <div class="progress-header">
+          <span id="progressText">Question 1 sur 10</span>
+          <span id="percentText">10%</span>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressBarFill"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-title" id="questionTitle">Chargement...</div>
+        <div id="optionsContainer" style="margin-top: 10px;"></div>
+      </div>
+    </div>
+
+    <div id="quiz-result-screen" style="display: none; flex-direction: column; gap: 16px;">
+      <div class="score-summary-card">
+        <div class="score-number" id="finalScoreText">0 / 10</div>
+        <div class="card-title" id="finalTitleText">Bravo !</div>
+        <div style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 16px;" id="finalDescText"></div>
+        <button class="restart-btn" onclick="startQuiz()">Refaire le Quiz</button>
+      </div>
+
+      <div class="card-title" style="color: var(--accent-blue);">Analyse détaillée de vos réponses</div>
+      <div id="correctionsContainer"></div>
+    </div>
+  </main>
+
+  <script>
+    const quizData = [
+      {
+        question: "1. Quelle option représente le mieux ce qu'est une vraie alimentation saine ?",
+        options: ["A) Manger le moins possible pour maigrir vite", "B) Supprimer totalement les glucides et les sucres", "C) Avoir de l'équilibre, de la variété et du plaisir", "D) Suivre un régime strict sans exception"],
+        correct: 2,
+        explanation: "Une alimentation saine repose sur l'équilibre et la régularité, non sur la privation."
+      },
+      {
+        question: "2. Pourquoi manger trop peu peut-il freiner la perte de graisse ?",
+        options: ["A) Cela ralentit le métabolisme et augmente la faim plus tard", "B) Le corps ne voit aucune différence", "C) Cela ne fonctionne que pour les athlètes", "D) C'est toujours la méthode la plus rapide"],
+        correct: 0,
+        explanation: "La privation extrême force le corps à économiser son énergie et crée un effet rebond."
+      },
+      {
+        question: "3. Qu'est-ce que la 'Règle des 80/20' ?",
+        options: ["A) 80% d'exercice et 20% d'alimentation", "B) 80% de repas nutritifs et 20% de repas plaisirs libres", "C) Manger 80% de moins que d'habitude", "D) 80% de protéines"],
+        correct: 1,
+        explanation: "Cette flexibilité garantit la régularité sans sentiment de privation."
+      },
+      {
+        question: "4. Quel est un exemple de substitution intelligente ?",
+        options: ["A) Ne plus jamais manger de pain", "B) Remplacer le riz blanc par du riz complet ou du quinoa", "C) Supprimer tous les glucides", "D) Ne boire que des liquides"],
+        correct: 1,
+        explanation: "Remplacer améliore la qualité nutritionnelle sans supprimer le plaisir."
+      },
+      {
+        question: "5. Quelle est la structure idéale pour composer son assiette principale ?",
+        options: ["A) Moitié protéines, moitié glucides", "B) 1/2 légumes, 1/4 protéines, 1/4 glucides + bonne graisse", "C) Uniquement des légumes", "D) 100% glucides"],
+        correct: 1,
+        explanation: "Ce modèle assure la satiété et un apport complet en nutriments."
+      },
+      {
+        question: "6. Quel signe indique que vous ne buvez pas assez d'eau ?",
+        options: ["A) Urine très claire", "B) Énergie constante", "C) Bouche sèche, fatigue et 'fausse faim'", "D) Sommeil profond"],
+        correct: 2,
+        explanation: "La soif est très fréquemment confondue avec la faim."
+      },
+      {
+        question: "7. Quelle habitude facilite l'alimentation saine au quotidien ?",
+        options: ["A) Décider au tout dernier moment", "B) Planifier et préparer ses repas à l'avance", "C) Sauter des repas", "D) Éviter de cuisiner"],
+        correct: 1,
+        explanation: "L'anticipation évite les choix impulsifs dictés par une faim extrême."
+      },
+      {
+        question: "8. Quel aliment est à 'éviter au quotidien' ?",
+        options: ["A) Pain complet", "B) Fromage", "C) Sodas et charcuteries ultra-transformées", "D) Riz blanc"],
+        correct: 2,
+        explanation: "Les produits ultra-transformés nuisent à la santé et doivent rester rares."
+      },
+      {
+        question: "9. Sur quoi une alimentation équilibrée agit-elle, en plus du poids ?",
+        options: ["A) Uniquement l'apparence physique", "B) L'humeur, l'énergie, le sommeil et l'estime de soi", "C) Seulement les performances sportives", "D) Rien d'autre"],
+        correct: 1,
+        explanation: "La nutrition agit directement sur la vitalité, le moral et la qualité de vie."
+      },
+      {
+        question: "10. Quel est le message central de ce module ?",
+        options: ["A) Maigrir exige de la souffrance", "B) Perdre du poids est la conséquence naturelle d'habitudes équilibrées", "C) On doit supprimer tout ce qu'on aime", "D) Le régime strict est la seule voie"],
+        correct: 1,
+        explanation: "Le résultat durable provient de l'équilibre et du plaisir, jamais de la rigueur extrême."
+      }
+    ];
+
+    let currentQ = 0;
+    let userAnswers = [];
+
+    function startQuiz() {
+      currentQ = 0;
+      userAnswers = [];
+      document.getElementById('quiz-result-screen').style.display = 'none';
+      document.getElementById('quiz-active-screen').style.display = 'flex';
+      renderQuestion();
+    }
+
+    function renderQuestion() {
+      const q = quizData[currentQ];
+      const total = quizData.length;
+      const percent = Math.round(((currentQ + 1) / total) * 100);
+
+      document.getElementById('progressText').innerText = `Question ${currentQ + 1} sur ${total}`;
+      document.getElementById('percentText').innerText = `${percent}%`;
+      document.getElementById('progressBarFill').style.width = `${percent}%`;
+
+      document.getElementById('questionTitle').innerText = q.question;
+
+      const container = document.getElementById('optionsContainer');
+      container.innerHTML = '';
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        btn.onclick = () => selectOption(idx);
+        container.appendChild(btn);
+      });
+    }
+
+    function selectOption(index) {
+      userAnswers.push(index);
+      currentQ++;
+
+      if (currentQ < quizData.length) {
+        renderQuestion();
+      } else {
+        showQuizResults();
+      }
+    }
+
+    function showQuizResults() {
+      document.getElementById('quiz-active-screen').style.display = 'none';
+      document.getElementById('quiz-result-screen').style.display = 'flex';
+
+      let score = 0;
+      userAnswers.forEach((ans, idx) => {
+        if (ans === quizData[idx].correct) score++;
+      });
+
+      document.getElementById('finalScoreText').innerText = `${score} / 10`;
+
+      const titleElem = document.getElementById('finalTitleText');
+      const descElem = document.getElementById('finalDescText');
+
+      if (score === 10) {
+        titleElem.innerText = "🏆 Parfait ! Grand Expert !";
+        descElem.innerText = "Vous maîtrisez parfaitement les clés d'une alimentation saine et équilibrée !";
+      } else if (score >= 7) {
+        titleElem.innerText = "👏 Bravo ! Excellent niveau !";
+        descElem.innerText = "Vous avez de très solides bases. Analysez la correction ci-dessous pour vous perfectionner.";
+      } else {
+        titleElem.innerText = "📚 Des notions à réviser";
+        descElem.innerText = "Prenez le temps de relire le guide pratique pour bien ancrer ces principes essentiels.";
+      }
+
+      const correctionsContainer = document.getElementById('correctionsContainer');
+      correctionsContainer.innerHTML = '';
+
+      quizData.forEach((q, idx) => {
+        const userChoice = userAnswers[idx];
+        const isCorrect = (userChoice === q.correct);
+
+        const card = document.createElement('div');
+        card.className = `correction-card ${isCorrect ? 'user-correct' : 'user-wrong'}`;
+
+        card.innerHTML = `
+          <div style="font-weight: 700; color: #fff;">${q.question}</div>
+          <div style="font-size: 0.88rem; color: ${isCorrect ? 'var(--accent-green)' : 'var(--wrong-red)'};">
+            ${isCorrect ? '✅ Votre réponse :' : '❌ Votre réponse :'} ${q.options[userChoice]}
+          </div>
+          <div class="highlight-box">
+            <strong>Réponse correcte :</strong> ${q.options[q.correct]}<br>
+            💡 <strong>Explication :</strong> ${q.explanation}
+          </div>
+        `;
+
+        correctionsContainer.appendChild(card);
+      });
+    }
+
+    startQuiz();
+  </script>
+</body>
+</html>

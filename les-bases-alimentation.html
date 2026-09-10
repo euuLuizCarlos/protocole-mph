@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Les Bases - Alimentation avec Plaisir</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --accent-green: #22c55e;
+      --wrong-red: #ef4444;
+      --quiz-gold: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back-btn {
+      color: var(--accent-blue);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .card-h2 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--accent-green);
+    }
+
+    .card-text {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .card-text strong {
+      color: var(--text-main);
+    }
+
+    .highlight-box {
+      background-color: rgba(34, 197, 94, 0.1);
+      border-left: 3px solid var(--accent-green);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--text-main);
+      line-height: 1.5;
+    }
+
+    .highlight-box strong {
+      color: var(--accent-green);
+    }
+
+    .plate-structure {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .plate-part {
+      background-color: #0d1117;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .plate-part.full {
+      grid-column: span 2;
+    }
+
+    .plate-part-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--accent-green);
+      margin-bottom: 4px;
+    }
+
+    .plate-part-desc {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .menu-box {
+      background-color: #0d1117;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 14px;
+      margin-top: 8px;
+    }
+
+    .menu-box-title {
+      font-weight: 700;
+      color: var(--accent-blue);
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      font-size: 0.85rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border-color);
+      padding: 10px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #0d1117;
+      color: var(--accent-green);
+    }
+
+    td {
+      background-color: var(--bg-card);
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="alimentation.html" class="back-btn">‹ Alimentation</a>
+  </header>
+
+  <main>
+    <h1 class="section-title">Guide Pratique de l'Alimentation</h1>
+
+    <!-- CONTENU 1 -->
+    <div class="card">
+      <h2 class="card-h2">1. Alimentation saine et impact sur votre vie</h2>
+      <div class="card-text">
+        <p>Bien manger n'est pas une question de restriction. C'est votre carburant — et une source de plaisir.</p>
+        <br>
+        <p>On nous a répété que "manger sainement" est synonyme de régime, de souffrance et de comptage de calories. C'est un mythe. L'alimentation saine est l'outil le plus puissant pour vous sentir bien dans votre corps au quotidien.</p>
+        <br>
+        <p>Tout ce que vous faites — travailler, vous entraîner, profiter de votre famille — dépend directement de ce que vous mettez dans votre assiette. Bien manger, c'est :</p>
+      </div>
+
+      <div class="highlight-box">
+        ⚡ <strong>Énergie réelle toute la journée :</strong> Fini le coup de barre de 14h !<br><br>
+        🧠 <strong>Humeur et clarté mentale :</strong> Votre intestin est votre 2ème cerveau.<br><br>
+        ✨ <strong>Confiance et relation apaisée :</strong> Fini la culpabilité "aujourd'hui j'ai fauté".<br><br>
+        🛡️ <strong>Prévention à long terme :</strong> Un investissement essentiel pour votre santé future.
+      </div>
+    </div>
+
+    <!-- CONTENU 2 -->
+    <div class="card">
+      <h2 class="card-h2">2. Manger mieux est plus simple qu'il n'y paraît</h2>
+      <div class="card-text">
+        <p>Oubliez l'idée que bien manger = manger peu, sans goût et vivre avec la faim. C'est la raison #1 pour laquelle la plupart des gens abandonnent.</p>
+        <br>
+        <p><strong>Les 3 grands mythes à déconstruire :</strong></p>
+        <br>
+        <p>• <strong>Mythe 1 : "Je dois supprimer tout ce que j'aime."</strong><br>
+        <em>Réalité :</em> Le secret réside dans l'équilibre et la fréquence, pas dans l'interdiction.</p>
+        <br>
+        <p>• <strong>Mythe 2 : "Moins je mange, plus vite je maigris."</strong><br>
+        <em>Réalité :</em> Trop peu manger ralentit votre métabolisme et provoque des fringales incontrôlables.</p>
+        <br>
+        <p>• <strong>Mythe 3 : "La nourriture saine n'a pas de goût."</strong><br>
+        <em>Réalité :</em> De vrais aliments bien assaisonnés avec des herbes, des épices et de l'huile d'olive sont délicieux.</p>
+      </div>
+
+      <div class="highlight-box">
+        💡 <strong>La Règle des 80 / 20 :</strong><br>
+        • <strong>80% de vos repas :</strong> Des choix nutritifs et rassasiants.<br>
+        • <strong>20% de vos repas :</strong> Des plaisirs libres (pizza, dessert...) sans culpabilité !
+      </div>
+
+      <div class="card-text">
+        <p><strong>💧 L'Hydratation : Votre boussole quotidienne</strong></p>
+        <p>On confond souvent la soif avec la faim. Visez environ <strong>35 ml d'eau par kg de poids de corps</strong> par jour (ex: 2,4L pour 70 kg). Commencez chaque journée par un grand verre d'eau avant votre café !</p>
+      </div>
+    </div>
+
+    <!-- CONTENU 3 -->
+    <div class="card">
+      <h2 class="card-h2">3. Guide pratique : Que manger & comment composer son assiette</h2>
+      <div class="card-text">
+        <p><strong>🍽️ Structure d'assiette idéale (pour chaque repas principal) :</strong></p>
+      </div>
+
+      <div class="plate-structure">
+        <div class="plate-part full">
+          <div class="plate-part-title">1/2 de l'assiette : Légumes</div>
+          <div class="plate-part-desc">Crus, cuits, vapeur, grillés (à volonté)</div>
+        </div>
+        <div class="plate-part">
+          <div class="plate-part-title">1/4 : Protéines</div>
+          <div class="plate-part-desc">Poulet, œufs, poisson, tofu, légumineuses</div>
+        </div>
+        <div class="plate-part">
+          <div class="plate-part-title">1/4 : Glucides</div>
+          <div class="plate-part-desc">Riz complet, patate douce, quinoa, féculents</div>
+        </div>
+      </div>
+
+      <div class="card-text" style="margin-top: 12px;">
+        <p><strong>🥗 3 Modèles de journées alimentaires prêtes à l'emploi :</strong></p>
+      </div>
+
+      <div class="menu-box">
+        <div class="menu-box-title">MODÈLE 1 — Équilibré Traditionnel</div>
+        <div class="card-text">
+          • <strong>Petit-déjeuner :</strong> Café + 2 œufs brouillés + 1 tranche de pain complet + 1 fruit<br>
+          • <strong>Collation matin :</strong> 1 fruit + une poignée d'oléagineux<br>
+          • <strong>Déjeuner :</strong> Riz + haricots + protéine grillée + salade à volonté + légumes<br>
+          • <strong>Goûter :</strong> Yaourt nature + granola sans sucre + miel<br>
+          • <strong>Dîner :</strong> Omelette aux légumes + salade verte
+        </div>
+      </div>
+
+      <div class="menu-box">
+        <div class="menu-box-title">MODÈLE 2 — Low Carb Modéré</div>
+        <div class="card-text">
+          • <strong>Petit-déjeuner :</strong> Omelette fromage & épinards + café<br>
+          • <strong>Collation matin :</strong> Poignée d'amandes ou carré de fromage<br>
+          • <strong>Déjeuner :</strong> Protéine grillée + légumes + grande salade + 2 c.à.s de patate douce<br>
+          • <strong>Goûter :</strong> Yaourt nature + fruits rouges<br>
+          • <strong>Dîner :</strong> Poisson grillé + légumes vapeur + huile d'olive
+        </div>
+      </div>
+
+      <div class="menu-box">
+        <div class="menu-box-title">MODÈLE 3 — Végétarien Équilibré</div>
+        <div class="card-text">
+          • <strong>Petit-déjeuner :</strong> Smoothie banane, avoine & beurre de cacahuète<br>
+          • <strong>Collation matin :</strong> Fruit + noix<br>
+          • <strong>Déjeuner :</strong> Quinoa + lentilles + tofu grillé + légumes<br>
+          • <strong>Goûter :</strong> Toast complet à l'avocat<br>
+          • <strong>Dîner :</strong> Soupe de légumes aux pois chiches ou omelette
+        </div>
+      </div>
+
+      <div class="card-text" style="margin-top: 16px;">
+        <p><strong>🔄 Substitutions Intelligentes :</strong></p>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Au lieu de...</th>
+            <th>Préférez...</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Riz blanc</td>
+            <td>Riz complet, quinoa ou riz de chou-fleur</td>
+          </tr>
+          <tr>
+            <td>Pain blanc</td>
+            <td>Pain complet ou pain au levain</td>
+          </tr>
+          <tr>
+            <td>Sucre raffiné</td>
+            <td>Miel, dattes ou stévia/érythritol</td>
+          </tr>
+          <tr>
+            <td>Sodas sucrés</td>
+            <td>Eau infusée aux fruits ou thé glacé sans sucre</td>
+          </tr>
+          <tr>
+            <td>Chips / Fritures</td>
+            <td>Oléagineux, chips de patate douce au four</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+</body>
+</html>

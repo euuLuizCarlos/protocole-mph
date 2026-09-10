@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Livre de Recettes - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --accent-green: #22c55e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back-btn {
+      color: var(--accent-blue);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px 16px;
+    }
+
+    .page-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    .tabs-container {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      scrollbar-width: none;
+    }
+    .tabs-container::-webkit-scrollbar { display: none; }
+
+    .tab-btn {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      color: var(--text-muted);
+      padding: 10px 14px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .tab-btn.active {
+      background-color: var(--accent-blue);
+      color: #0d1117;
+      border-color: var(--accent-blue);
+    }
+
+    .recipes-list {
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .recipes-list.active {
+      display: flex;
+    }
+
+    .recipe-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .recipe-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .recipe-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .recipe-text strong {
+      color: var(--text-main);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="alimentation.html" class="back-btn">‹ Alimentation</a>
+  </header>
+
+  <main>
+    <h1 class="page-title">85 Recettes Gourmandes & Healthy</h1>
+
+    <div class="tabs-container">
+      <button class="tab-btn active" onclick="showTab('b1')">☕ Petit-déjeuner & Encas (1-25)</button>
+      <button class="tab-btn" onclick="showTab('b2')">🍗 Repas Principaux (26-55)</button>
+      <button class="tab-btn" onclick="showTab('b3')">🍫 Desserts Healthy (56-85)</button>
+    </div>
+
+    <!-- BLOC 1: PETIT-DÉJEUNER ET ENCAS (1 à 25) -->
+    <div id="b1" class="recipes-list active">
+      <div class="recipe-card">
+        <div class="recipe-title">1. Œufs brouillés crémeux aux épinards</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 2 œufs, 1 poignée d'épinards hachés, 1 filet d'huile d'olive, sel, poivre.<br><strong>Préparation :</strong> Chauffer l'huile, faire revenir les épinards 1 min, ajouter les œufs battus, mélanger à feu doux jusqu'à consistance crémeuse.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">2. Omelette au fromage frais & tomate</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 2 œufs, 1 tranche de fromage blanc/frais désaltérant, ½ tomate coupée, sel, origan.<br><strong>Préparation :</strong> Battre les œufs, mélanger le fromage et la tomate, verser dans la poêle chaude et cuire des deux côtés.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">3. Tapioca au fromage & origan</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 3 c.à.s de farine de tapioca, 1 tranche de fromage, origan.<br><strong>Préparation :</strong> Étaler le tapioca dans la poêle chaude, laisser figer, garnir de fromage et plier en deux.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">4. Pain complet, œuf poché & avocat</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 tranche de pain complet, 1 œuf, ¼ d'avocat écrasé, sel, jus de citron.<br><strong>Préparation :</strong> Cuire l'œuf 3 min dans l'eau bouillante vinaigrée. Étaler l'avocat assaisonné sur le pain grillé et déposer l'œuf.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">5. Pancake banane & avoine (2 ingrédients)</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 banane écrasée, 2 œufs, cannelle.<br><strong>Préparation :</strong> Tout mélanger, verser de petites portions dans une poêle antiadhésive et dorer des deux côtés.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">6. Crêpe salée au tapioca (Crepioca)</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 œuf, 2 c.à.s de tapioca, sel, farce au fromage ou poulet effiloché.<br><strong>Préparation :</strong> Battre l'œuf avec le tapioca, cuire à la poêle des deux côtés, garnir et plier.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">7. Yaourt nature, granola maison & fruits</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 pot de yaourt nature, 2 c.à.s de granola sans sucre, fruits frais coupés.<br><strong>Préparation :</strong> Disposer en couches dans un pot ou un verre.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">8. Toast complet, cottage & tomates séchées</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 tranche de pain complet grillé, 2 c.à.s de fromage cottage, tomates séchées hachées.<br><strong>Préparation :</strong> Tartiner le cottage sur le pain et ajouter les tomates séchées.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">9. Couscous oriental aux légumes</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> ½ tasse de semoule de couscous, eau chaude, carottes et petits pois cuits, huile d'olive.<br><strong>Préparation :</strong> Réhydrater la semoule à l'eau chaude, mélanger aux légumes et assaisonner à l'huile d'olive.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">10. Wrap complet œuf & fromage</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 tortilla complète, 2 œufs brouillés, fromage, salade verte.<br><strong>Préparation :</strong> Disposer les œufs et le fromage sur la tortilla et rouler comme un burrito.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">11. Smoothie banane, avoine & beurre de cacahuète</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 banane, 1 verre de lait (ou végétal), 2 c.à.s d'avoine, 1 c.à.s de beurre de cacahuète.<br><strong>Préparation :</strong> Tout mixer au blender jusqu'à consistance homogène.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">12. Smoothie vert detox</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 feuille de chou kale, 1 pomme, jus de ½ citron, eau de coco.<br><strong>Préparation :</strong> Tout mixer au blender et servir très frais.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">13. Overnight oats (Avoine de nuit)</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 4 c.à.s d'avoine, 1 verre de lait, 1 c.à.s de graines de chia, miel, fruits.<br><strong>Préparation :</strong> Mélanger le tout dans un pot le soir, réserver au frais et consommer le matin.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">14. Porridge d'avoine chaud à la cannelle</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 3 c.à.s d'avoine, 1 verre de lait, cannelle, miel.<br><strong>Préparation :</strong> Cuire l'avoine dans le lait à feu doux en remuant jusqu'à épaississement.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">15. Pancakes américains fit</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 banane, 2 œufs, 3 c.à.s d'avoine, cannelle.<br><strong>Préparation :</strong> Mixer le tout et cuire de petites galettes épaisses à la poêle.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">16. Yaourt aux fruits rouges & graines de chia</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 pot de yaourt nature, fraises et myrtilles, 1 c.à.s de chia.<br><strong>Préparation :</strong> Disposer le yaourt et garnir avec les fruits et les graines.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">17. Smoothie papaye & graines de lin</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> ½ papaye, 1 verre de lait, 1 c.à.s de graines de lin moulues.<br><strong>Préparation :</strong> Mixer le tout au blender et servir.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">18. Bowl d'Açaí maison (sans sucre)</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 pulpe d'açaí pur, 1 banane congelée, granola, fruits en toppings.<br><strong>Préparation :</strong> Mixer l'açaí et la banane jusqu'à texture crémeuse, servir en bol avec le granola.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">19. Mix de fruits secs & oléagineux</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Noix du Brésil, amandes, abricots secs, raisins secs.<br><strong>Préparation :</strong> Mélanger en portions égales et conserver dans de petits pots.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">20. Bâtonnets de légumes & houmous</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Carottes et concombres en bâtonnets, houmous (pois chiches, huile d'olive, citron, tahini).<br><strong>Préparation :</strong> Servir les bâtonnets de légumes frais à tremper dans le houmous.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">21. Œufs durs assaisonnés</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 2 œufs durs, sel, paprika, filet d'huile d'olive.<br><strong>Préparation :</strong> Couper les œufs durs en deux et saupoudrer d'épices et d'huile.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">22. Chips de patate douce au four</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 patate douce tranchée très finement, huile d'olive, sel, paprika.<br><strong>Préparation :</strong> Assaisonner et enfourner 20 min à 200°C en retournant à mi-cuisson.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">23. Banane & beurre de cacahuète</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 banane, 1 c.à.s de beurre de cacahuète pur.<br><strong>Préparation :</strong> Trancher la banane et déguster avec le beurre de cacahuète.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">24. Fromage frais grillé au miel</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 tranche de fromage à poêler (type halloumi ou fromage frais), filet de miel.<br><strong>Préparation :</strong> Griller le fromage des deux côtés et nappez d'un filet de miel.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">25. Pop-corn sans huile à la casserole</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Maïs à pop-corn, pincee de sel.<br><strong>Préparation :</strong> Chauffer le maïs à couvert à feu moyen sans matière grasse jusqu'à éclatement complet.</div>
+      </div>
+    </div>
+
+    <!-- BLOC 2: REPAS PRINCIPAUX (26 à 55) -->
+    <div id="b2" class="recipes-list">
+      <div class="recipe-card">
+        <div class="recipe-title">26. Poulet grillé citron & herbes</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 2 filets de poulet, jus de 1 citron, romarin, ail, huile d'olive, sel.<br><strong>Préparation :</strong> Mariner le poulet 20 min, griller à feu moyen jusqu'à cuisson complète.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">27. Poulet sautstyle sauté asiatique fit</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Dés de poulet, poivrons, oignons, sauce soja salée light, gingembre, noix de cajou.<br><strong>Préparation :</strong> Saisir le poulet, ajouter les légumes, finir avec la sauce soja et les cajous.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">28. Parmentier de poulet & patate douce</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Poulet effiloché en sauce tomate, purée de patate douce, fromage râpé.<br><strong>Préparation :</strong> Monter en couches dans un plat, gratiner au four.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">29. Poulet au curry & légumes croquants</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Poulet en dés, lait de coco léger, curry, carottes, courgettes.<br><strong>Préparation :</strong> Faire revenir le poulet, ajouter les légumes et le lait de coco au curry, laisser mijoter.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">30. Croquettes de poulet au four fit</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Poulet effiloché, purée de pomme de terre, farine d'avoine.<br><strong>Préparation :</strong> Façonner les croquettes, rouler dans l'avoine et cuire à 200°C.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">31. Poulet grillé sauce moutarde & miel</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Filet de poulet, moutarde douce, miel, huile d'olive.<br><strong>Préparation :</strong> Mélanger la sauce, badigeonner le poulet et griller à la poêle.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">32. Saumon grillé & asperges poêlées</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Pavé de saumon, asperges, huile d'olive, citron, sel.<br><strong>Préparation :</strong> Griller le saumon 4 min par côté ; faire sauter les asperges à l'huile d'olive.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">33. Dos de cabillaud/tilapia au four & légumes</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Filet de poisson blanc, tomates, oignons, poivrons, huile d'olive.<br><strong>Préparation :</strong> Disposer le poisson et les légumes dans un plat, enfourner 20 min à 200°C.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">34. Crevettes sautées ail & spaghetti de courgettes</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Crevettes décortiquées, ail, huile d'olive, courgettes en spirales.<br><strong>Préparation :</strong> Faire revenir l'ail et les crevettes, ajouter les courgettes 2 min.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">35. Bœuf grillé & purée de patate douce/panais</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Steak de bœuf maigre, patate douce cuite écrasée, muscade, huile d'olive.<br><strong>Préparation :</strong> Griller la viande, préparer la purée assaisonnée.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">36. Bœuf haché & tagliatelles de courgettes</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Bœuf haché maigre, sauce tomate maison, courgettes en rubans.<br><strong>Préparation :</strong> Faire revenir la viande avec la sauce tomate et servir sur les courgettes poêlées.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">37. Sauté de bœuf aux légumes croquants</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Bœuf en dés, carottes, pommes de terre, petits pois, sauce tomate.<br><strong>Préparation :</strong> Mijoter la viande jusqu'à ce qu'elle soit tendre, ajouter les légumes.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">38. Boulettes de bœuf au four & sauce tomate</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Bœuf haché, œuf, farine d'avoine, sauce tomate maison.<br><strong>Préparation :</strong> Former les boulettes, dorer à la poêle et finir la cuisson dans la sauce.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">39. Poêlée de pois chiches, épinards & tomate</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Pois chiches cuits, épinards, dés de tomate, ail, cumin.<br><strong>Préparation :</strong> Faire revenir l'ail et la tomate, ajouter les pois chiches puis les épinards.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">40. Dhal de lentilles crémeux</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Lentilles, carottes, oignons, tomates concassées, laurier.<br><strong>Préparation :</strong> Cuire le tout ensemble à feu doux jusqu'à ce que les lentilles soient fondantes.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">41. Tofu poêlé à la sauce sésame & soja</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Tofu ferme en cubes, sauce soja, graines de sésame, gingembre.<br><strong>Préparation :</strong> Griller les cubes de tofu à la poêle et napper de sauce sésame.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">42. Omelette baveuse aux légumes poêlés</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 3 œufs, courgettes, carottes râpées, fromage râpé.<br><strong>Préparation :</strong> Faire revenir les légumes, verser les œufs battus et cuire en omelette.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">43. Galettes végétaliennes de pois chiches</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Pois chiches écrasés, oignon, cumin, farine d'avoine.<br><strong>Préparation :</strong> Former des steaks végétaux et griller des deux côtés à la poêle.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">44. Aubergines à la parmesane fit (au four)</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Tranches d'aubergines, sauce tomate, mozzarella light, basilic.<br><strong>Préparation :</strong> Cuire les aubergines au four, alterner avec la sauce et le fromage, faire gratinerr.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">45. Riz complet léger à l'ail</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Riz complet, ail haché, oignon, huile d'olive.<br><strong>Préparation :</strong> Faire revenir l'ail, ajouter le riz et l'eau, cuire à feu doux.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">46. Haricots rouges/noirs mijotés à l'ancienne</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Haricots cuits, ail, oignon, feuille de laurier.<br><strong>Préparation :</strong> Faire revenir les aromates et ajouter aux haricots pour faire réduire le jus.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">47. Purée onctueuse de patate douce</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Patate douce cuite, huile d'olive, sel, pincée de muscade.<br><strong>Préparation :</strong> Écraser la patate douce encore chaude avec l'huile d'olive et les épices.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">48. Salade de quinoa colorée</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Quinoa cuit, maïs, poivrons en dés, petits pois, citron, huile d'olive.<br><strong>Préparation :</strong> Mélanger tous les ingrédients froids ou tièdes.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">49. Poêlée de légumes du soleil rôtis</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Courgettes, aubergines, poivrons, oignons, herbes de Provence.<br><strong>Préparation :</strong> Couper en dés, assaisonner et rôtir au four à 200°C pendant 25 min.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">50. Salade composée sauce yaourt & moutarde</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Jeunes pousses, tomates cerises, concombre, yaourt nature, moutarde.<br><strong>Préparation :</strong> Assembler la salade et mélanger la sauce yaourt-moutarde à part.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">51. Soupe moulinée de légumes & poulet</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Potiron, carottes, pommes de terre, poulet effiloché, oignon.<br><strong>Préparation :</strong> Cuire les légumes, mixer partiellement et ajouter le poulet effiloché.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">52. Soupe verte de légumes & chou kale</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Pommes de terre, chou emmincé, ail, oignon, huile d'olive.<br><strong>Préparation :</strong> Cuire et écraser les pommes de terre dans le bouillon, ajouter le chou à la fin.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">53. Velouté de potimarron au gingembre</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Potimarron, gingembre frais, oignon, bouillon végétal.<br><strong>Préparation :</strong> Cuire le potimarron avec le gingembre et mixer jusqu'à consistance veloutée.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">54. Risotto de quinoa aux légumes</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Quinoa, bouillon chaud, courgettes, carottes, parmesan râpé.<br><strong>Préparation :</strong> Cuire le quinoa en versant le bouillon progressivement, ajouter les légumes et le fromage.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">55. Crêpes légères aux épinards garnies au poulet</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Pâte à crêpe mixée aux épinards, poulet effiloché en sauce tomate.<br><strong>Préparation :</strong> Cuire les crêpes vertes, garnir de poulet, rouler et gratiner légèrement.</div>
+      </div>
+    </div>
+
+    <!-- BLOC 3: DESSERTS HEALTHY (56 à 85) -->
+    <div id="b3" class="recipes-list">
+      <div class="recipe-card">
+        <div class="recipe-title">56. Brownie Healthy Banane & Cacao</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 2 bananes écrasées, 3 œufs, 4 c.à.s de cacao pur, 3 c.à.s d'avoine, levure.<br><strong>Préparation :</strong> Mélanger le tout, verser dans un moule et enfourner 25 min à 180°C.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">57. Mousse au chocolat à l'avocat</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 avocat mûr, 3 c.à.s de cacao en poudre, 2 c.à.s de miel.<br><strong>Préparation :</strong> Mixer au robot jusqu'à texture onctueuse et réserver 1h au frais.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">58. Truffes de dattes au cacao & noisettes</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Dattes dénoyautées, cacao pur en poudre, éclats de noisettes.<br><strong>Préparation :</strong> Mixer les dattes en pâte, former des boules, rouler dans le cacao et les noisettes.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">59. Mugcake chocolat express au micro-ondes</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 œuf, 2 c.à.s d'avoine, 2 c.à.s de cacao, 1 c.à.s de miel, levure.<br><strong>Préparation :</strong> Mélanger directement dans une tasse et cuire 1 min 30 au micro-ondes.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">60. Fondue de fruits au chocolat 70%</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Chocolat noir 70% fondu, fraises, bananes en morceaux.<br><strong>Préparation :</strong> Faire fondre le chocolat au bain-marie et tremper les fruits frais.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">61. Cookies avoine & pépites de chocolat</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> 1 banane écrasée, 1 tasse d'avoine, pépites de chocolat noir 70%.<br><strong>Préparation :</strong> Mélanger, former des galettes et enfourner 15 min à 180°C.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">62. Gâteau de carottes fit & nappe chocolat</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Carottes, œufs, huile de coco, farine complète ; Nappage: cacao + lait + miel.<br><strong>Préparation :</strong> Mixer les carottes avec les œufs, ajouter la farine, cuire 35 min à 180°C. Napper.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">63. Tarte aux pommes rustique légère</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Pâte d'avoine, pommes tranchées, cannelle, filet de miel.<br><strong>Préparation :</strong> Étaler la pâte, disposer les pommes, saupoudrer de cannelle et cuire 30 min à 180°C.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">64. Gâteau moelleux à l'orange complète</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Jus d'orange, œufs, huile, farine complète, levure.<br><strong>Préparation :</strong> Tout mixer au blender et enfourner à 180°C pendant 40 min.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">65. Cheesecake léger aux fruits rouges</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Base biscuit complet; appareil cream cheese léger + yaourt; coulis de fruits rouges.<br><strong>Préparation :</strong> Monter la base, verser l'appareil, réserver 4h au frais et napper de fruits.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">66. Gâteau banane, avoine & cannelle</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Bananes mûres écrasées, œufs, flocons d'avoine, levure, cannelle.<br><strong>Préparation :</strong> Tout mélanger et cuire dans un moule à cake 35 min à 180°C.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">67. Pudding de chia au lait de coco</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Graines de chia, lait de coco, miel, extrait de vanille.<br><strong>Préparation :</strong> Mélanger le tout dans un verre et réserver au frais au moins 4h.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">68. Flan au lait léger sans sucre raffiné</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Lait, œufs, édulcorant naturel, vanille.<br><strong>Préparation :</strong> Battre les ingrédients et cuire au bain-marie au four 40 min à 180°C.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">69. Crème de papaye au coulis de fruits rouges</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Papaye mûre, yaourt grec léger, coulis de fruits rouges sans sucre.<br><strong>Préparation :</strong> Mixer la papaye avec le yaourt et servir nappé de coulis.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">70. Mousse légère au fruit de la passion</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Jus de fruit de la passion, yaourt nature, gélatine neutre, édulcorant.<br><strong>Préparation :</strong> Mixer les ingrédients et réserver au frais jusqu'à prise en gelée.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">71. Energy balls avoine, beurre de cacahuète & miel</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Flocons d'avoine, beurre de cacahuète, miel, cannelle.<br><strong>Préparation :</strong> Mélanger pour obtenir une pâte compacte, former des boules et réfrigérer.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">72. Biscuits salés de tapioca au fromage</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Fécule de tapioca/manioc, fromage râpé, œuf, huile d'olive.<br><strong>Préparation :</strong> Mélanger, former de petits biscuits et cuire à 180°C jusqu'à ce qu'ils soient dorés.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">73. Paçoca fit (Mignardise d'arachide sans sucre)</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Cacahuètes grillées mixées, édulcorant naturel, pincée de sel.<br><strong>Préparation :</strong> Tasser fermement dans de petits moules et placer au frais.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">74. Barres de céréales maison aux fruits secs</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Avoine, miel, beurre de cacahuète, amandes, abricots secs.<br><strong>Préparation :</strong> Tasser dans un moule, mettre au frais puis découper en barres.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">75. Bouchées de coco légères style "Rocher coco"</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Coco râpé, lait concentré léger/miel, blanc d'œuf.<br><strong>Préparation :</strong> Façonner de petites boules et dorer légèrement au four.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">76. Nice Cream Banane (Glace 1 Ingrédient)</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Bananes congelées en rondelles.<br><strong>Préparation :</strong> Mixer les bananes congelées au robot jusqu'à texture de glace onctueuse.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">77. Bâtonnets glacés yaourt & fraises</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Yaourt nature, fraises mixées, miel.<br><strong>Préparation :</strong> Verser dans des moules à esquimaux et congeler 4h.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">78. Esquimaux ananas, menthe & eau de coco</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Ananas frais, feuilles de menthe, eau de coco.<br><strong>Préparation :</strong> Tout mixer, verser dans des moules et congeler.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">79. Açaí bowl protéiné aux fruits frais</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Açaí pur congelé, banane, fraises, granola sans sucre.<br><strong>Préparation :</strong> Mixer l'açaí et servir dans un bol avec les toppings de fruits frais.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">80. Sorbet mangue crémeux (2 ingrédients)</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Mangue congelée en dés, filet de lait de coco.<br><strong>Préparation :</strong> Mixer au robot jusqu'à consistance de sorbet lisse.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">81. Pomme au four cannelle & noix</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Pomme, cannelle, filet de miel, éclats de noix.<br><strong>Préparation :</strong> Évider le centre de la pomme, garnir et cuire 20 min au four à 180°C.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">82. Banane poêlée caramelisée au miel</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Banane coupée en deux, cannelle, filet de miel.<br><strong>Préparation :</strong> Poêler les tranches de banane à sec jusqu'à ce qu'elles dorent, saupoudrer de cannelle.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">83. Salade de fruits frais citron & menthe</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Fruits de saison coupés en dés, jus de citron, menthe fraîche hachée.<br><strong>Préparation :</strong> Mélanger le tout délicatement et servir bien frais.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">84. Ananas grillé à la cannelle</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Tranches d'ananas frais, cannelle en poudre.<br><strong>Préparation :</strong> Saisir les tranches d'ananas à la poêle chaude et saupoudrer de cannelle.</div>
+      </div>
+      <div class="recipe-card">
+        <div class="recipe-title">85. Dattes fourrées aux noix (Bouchées express)</div>
+        <div class="recipe-text"><strong>Ingrédients :</strong> Dattes moelleuses dénoyautées, cerneaux de noix ou amandes.<br><strong>Préparation :</strong> Ouvrir la datte en deux et la garnir d'une noix croquante.</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function showTab(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.recipes-list').forEach(list => list.classList.remove('active'));
+
+      event.target.classList.add('active');
+      document.getElementById(tabId).classList.add('active');
+    }
+  </script>
+</body>
+</html>
