@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>InfoApp - Protocole MPH</title>
   <style>
     :root {
@@ -12,6 +12,7 @@
       --text-main: #f0f6fc;
       --text-muted: #8b949e;
       --offer-gold: #f59e0b;
+      --accent-blue: #38bdf8;
     }
 
     * {
@@ -19,6 +20,7 @@
       margin: 0;
       padding: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent; /* Remove o destaque azul nativo ao tocar */
     }
 
     body {
@@ -36,7 +38,7 @@
       width: 100%;
       max-width: 900px;
       background-color: var(--bg-card);
-      padding: 16px 24px;
+      padding: 16px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -55,11 +57,19 @@
       gap: 8px;
     }
 
+    .icon-btn {
+      background: none;
+      border: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+      padding: 4px;
+    }
+
     /* Container Principal */
     main {
       width: 100%;
       max-width: 900px;
-      padding: 24px 16px;
+      padding: 16px;
     }
 
     /* Banner Principal com Imagem */
@@ -67,8 +77,8 @@
       width: 100%;
       border-radius: 16px;
       overflow: hidden;
-      margin-bottom: 32px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      margin-bottom: 24px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
       border: 1px solid var(--border-color);
       background-color: var(--bg-card);
     }
@@ -82,20 +92,21 @@
 
     /* Grade de Módulos */
     .section-title {
-      font-size: 1.1rem;
-      margin-bottom: 16px;
+      font-size: 1rem;
+      margin-bottom: 12px;
       color: var(--text-muted);
       text-transform: uppercase;
       letter-spacing: 1px;
+      font-weight: 600;
     }
 
     .modules-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 16px;
     }
 
-    /* Cards de Módulos */
+    /* Cards de Módulos - Interatividade e Toque */
     .module-card {
       background-color: var(--bg-card);
       border-radius: 14px;
@@ -105,18 +116,30 @@
       color: inherit;
       display: flex;
       flex-direction: column;
-      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+      user-select: none;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      cursor: pointer;
     }
 
-    .module-card:hover {
-      transform: translateY(-4px);
-      border-color: #3b82f6;
-      box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+    /* Efeito de Toque (Mobile First & Desktop Click) */
+    .module-card:active {
+      transform: scale(0.97);
+      border-color: var(--accent-blue);
+      box-shadow: 0 4px 12px rgba(56, 189, 248, 0.2);
+    }
+
+    /* Suporte a Hover exclusivo para computadores (com mouse) */
+    @media (hover: hover) {
+      .module-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--accent-blue);
+        box-shadow: 0 8px 20px rgba(56, 189, 248, 0.2);
+      }
     }
 
     .module-thumb {
       width: 100%;
-      height: 180px;
+      height: 160px;
       background-color: #0d1117;
       display: flex;
       align-items: center;
@@ -129,16 +152,17 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
+      pointer-events: none;
     }
 
     .module-info {
-      padding: 16px;
+      padding: 12px;
       text-align: center;
     }
 
     .module-title {
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.95rem;
     }
 
     /* Módulo de Oferta Especial */
@@ -147,19 +171,25 @@
       position: relative;
     }
 
-    .module-card.offer-card:hover {
-      box-shadow: 0 8px 20px rgba(245, 158, 11, 0.25);
+    .module-card.offer-card:active {
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    @media (hover: hover) {
+      .module-card.offer-card:hover {
+        box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+      }
     }
 
     .offer-tag {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 8px;
+      right: 8px;
       background-color: var(--offer-gold);
       color: #000;
-      font-size: 0.7rem;
+      font-size: 0.65rem;
       font-weight: 800;
-      padding: 4px 8px;
+      padding: 4px 6px;
       border-radius: 4px;
       text-transform: uppercase;
       z-index: 2;
@@ -167,6 +197,18 @@
 
     .module-card.offer-card .module-title {
       color: var(--offer-gold);
+    }
+
+    /* Ajuste fino para telas menores que 380px */
+    @media (max-width: 380px) {
+      .modules-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+      }
+
+      .module-thumb {
+        height: 130px;
+      }
     }
   </style>
 </head>
@@ -177,7 +219,7 @@
     <div class="brand">
       <span>INFOAPP</span>
     </div>
-    <div>🔔</div>
+    <button class="icon-btn" aria-label="Notificações">🔔</button>
   </header>
 
   <!-- Conteúdo Principal -->
