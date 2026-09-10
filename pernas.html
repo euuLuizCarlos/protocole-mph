@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Cuisses & Fessiers - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --tag-bg: #1e3a8a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back-btn {
+      color: var(--accent-blue);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px 16px;
+    }
+
+    .intro-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .intro-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .intro-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .section-header {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .exercise-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .exercise-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .exercise-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .exercise-badge {
+      background-color: var(--tag-bg);
+      color: var(--accent-blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #2563eb;
+      white-space: nowrap;
+    }
+
+    .exercise-info {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exercise-info strong {
+      color: var(--text-main);
+    }
+
+    .video-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="treino-em-casa.html" class="back-btn">‹ Retour aux entraînements</a>
+  </header>
+
+  <main>
+    <div class="intro-card">
+      <h1 class="intro-title">Cuisses & Fessiers</h1>
+      <p class="intro-desc">
+        <strong>À quoi ça sert :</strong> Ce programme tonifie et raffermit l'ensemble du bas du corps (quadriceps, fessiers et ischio-jambiers). Il permet d'améliorer la force fonctionnelle, d'activer la dépense calorique et de sculpter les jambes sans matériel.
+      </p>
+    </div>
+
+    <div class="section-header">Exercices de la session</div>
+
+    <div class="exercise-list">
+
+      <!-- EXERCÍCIO 1 (VÍDEO ATUALIZADO) -->
+      <div class="exercise-card">
+        <div class="exercise-header">
+          <div class="exercise-name">1. Squat</div>
+          <span class="exercise-badge">4 séries x 15 rep</span>
+        </div>
+        
+        <div class="exercise-info">
+          <p><strong>🎯 À quoi ça sert :</strong> Travaille la puissance globale des cuisses (quadriceps) et galbe les fessiers.</p>
+          <p><strong>💡 Comment faire :</strong> Debout, pieds écartés de la largeur des épaules et orteils vers l'extérieur. Croisez les mains sur les épaules, inspirez en fléchissant les jambes pour aligner les hanches et les genoux en maintenant le dos droit, puis expirez en vous redressant entièrement.</p>
+        </div>
+
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/hNOGNlTKIYg" title="Squat" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- EXERCÍCIO 2 (VÍDEO ATUALIZADO) -->
+      <div class="exercise-card">
+        <div class="exercise-header">
+          <div class="exercise-name">2. Fente avant</div>
+          <span class="exercise-badge">3 séries x 12 rep / jambe</span>
+        </div>
+        
+        <div class="exercise-info">
+          <p><strong>🎯 À quoi ça sert :</strong> Renforce le galbe des fessiers, améliore l'équilibre et cible l'arrière des cuisses.</p>
+          <p><strong>💡 Comment faire :</strong> Debout, mains à la taille et buste droit. Inspirez en faisant un pas vers l'avant puis fléchissez les jambes. Expirez en poussant sur la jambe avant pour revenir en position initiale, en veillant à ce que le genou ne dépasse pas les orteils. Alternez jambe gauche et jambe droite.</p>
+        </div>
+
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/bR9syGmHXns" title="Fente avant" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- EXERCÍCIO 3 (VÍDEO ATUALIZADO) -->
+      <div class="exercise-card">
+        <div class="exercise-header">
+          <div class="exercise-name">3. Pont-fessier (Glute Bridge)</div>
+          <span class="exercise-badge">4 séries x 15 rep</span>
+        </div>
+        
+        <div class="exercise-info">
+          <p><strong>🎯 À quoi ça sert :</strong> Isole et tonifie les grands fessiers tout en soulageant la pression du bas du dos.</p>
+          <p><strong>💡 Comment faire :</strong> Allongé sur le dos, genoux pliés et pieds à plat au sol. Poussez sur vos talons pour élever le bassin vers le haut en contractant fortement les fessiers au sommet pendant 1 seconde avant de redescendre.</p>
+        </div>
+
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/GCg_EOiWtsk" title="Pont-fessier (glute bridge)" allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

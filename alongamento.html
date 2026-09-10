@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Étirements & Mobilité - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --tag-bg: #1e3a8a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back-btn {
+      color: var(--accent-blue);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px 16px;
+    }
+
+    .intro-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .intro-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .intro-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .audio-help-card {
+      background-color: #1e293b;
+      border-left: 4px solid var(--accent-blue);
+      padding: 12px 16px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+
+    .section-header {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .exercise-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .exercise-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .exercise-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .exercise-badge {
+      background-color: var(--tag-bg);
+      color: var(--accent-blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #2563eb;
+      white-space: nowrap;
+    }
+
+    .exercise-info {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exercise-info strong {
+      color: var(--text-main);
+    }
+
+    .video-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="treino-em-casa.html" class="back-btn">‹ Retour aux entraînements</a>
+  </header>
+
+  <main>
+    <div class="intro-card">
+      <h1 class="intro-title">Étirements & Mobilité</h1>
+      <p class="intro-desc">
+        <strong>À quoi ça sert :</strong> Cette routine est conçue pour soulager les tensions accumulées, améliorer la posture et augmenter la souplesse articulaire. Idéale au réveil ou après de longues heures assise pour prévenir les douleurs de dos.
+      </p>
+    </div>
+
+    <div class="audio-help-card">
+      💡 <strong>Note :</strong> Si la vidéo s'affiche en anglais, cliquez sur l'icône de paramètres ⚙️ dans le lecteur pour activer les sous-titres ou la piste audio en <strong>Français</strong>.
+    </div>
+
+    <div class="section-header">Exercices de la session</div>
+
+    <div class="exercise-list">
+
+      <!-- EXERCÍCIO 1 -->
+      <div class="exercise-card">
+        <div class="exercise-header">
+          <div class="exercise-name">1. Chat-Vache (Mobilité de la colonne)</div>
+          <span class="exercise-badge">2 séries x 45 sec</span>
+        </div>
+        
+        <div class="exercise-info">
+          <p><strong>🎯 À quoi ça sert :</strong> Débloque les zones lombaire et thoracique tout en réduisant la raideur du dos.</p>
+          <p><strong>💡 Comment faire :</strong> Mettez-vous à quatre pattes. Inspirez en creusant le dos et en regardant vers le haut. Expirez en arrondissant le dos (comme un chat) en rentrant le nombril.</p>
+        </div>
+
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/kqnua4rHVVA?cc_load_policy=1&hl=fr" title="Chat-Vache" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- EXERCÍCIO 2 (VÍDEO ATUALIZADO) -->
+      <div class="exercise-card">
+        <div class="exercise-header">
+          <div class="exercise-name">2. Étirement des ischio-jambiers</div>
+          <span class="exercise-badge">20 à 30 sec par jambe</span>
+        </div>
+        
+        <div class="exercise-info">
+          <p><strong>🎯 À quoi ça sert :</strong> Assouplit l'arrière des cuisses et détend la pression sur le bas du dos.</p>
+          <p><strong>💡 Comment faire :</strong> Allongez-vous sur le dos, pliez un genou et élevez l'autre jambe tendue vers le haut. Poussez le talon vers le plafond jusqu'à sentir un étirement derrière la jambe. Maintenez la position 20 à 30 secondes.</p>
+        </div>
+
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/PC-KmNmLLVI" title="Étirement des ischio-jambiers" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- EXERCÍCIO 3 (VÍDEO ATUALIZADO) -->
+      <div class="exercise-card">
+        <div class="exercise-header">
+          <div class="exercise-name">3. Posture de l'enfant (Balasana)</div>
+          <span class="exercise-badge">2 séries x 60 sec</span>
+        </div>
+        
+        <div class="exercise-info">
+          <p><strong>🎯 À quoi ça sert :</strong> Relâche les épaules, le dos et les hanches tout en favorisant la décompression de la colonne vertébrale.</p>
+          <p><strong>💡 Comment faire :</strong> Asseyez-vous sur vos genoux, les fesses posées sur les talons. Inspirez en étirant les bras vers le haut, puis expirez en cherchant loin devant sur le tapis avec vos mains. Gardez bien les fesses collées aux talons et respirez profondément.</p>
+        </div>
+
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/wG852HxEsmU" title="Balasana Child pose Posture de l’enfant" allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

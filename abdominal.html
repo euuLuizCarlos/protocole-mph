@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Sangle Abdominale & Gainage - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --tag-bg: #1e3a8a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back-btn {
+      color: var(--accent-blue);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px 16px;
+    }
+
+    .intro-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+
+    .intro-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .intro-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .section-header {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .exercise-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .exercise-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .exercise-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .exercise-name {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .exercise-badge {
+      background-color: var(--tag-bg);
+      color: var(--accent-blue);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #2563eb;
+      white-space: nowrap;
+    }
+
+    .exercise-info {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exercise-info strong {
+      color: var(--text-main);
+    }
+
+    .video-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="treino-em-casa.html" class="back-btn">‹ Retour aux entraînements</a>
+  </header>
+
+  <main>
+    <div class="intro-card">
+      <h1 class="intro-title">Abdominaux & Gainage</h1>
+      <p class="intro-desc">
+        <strong>À quoi ça sert :</strong> Cette séance cible le renforcement de la sangle abdominale profonde et superficielle. Elle permet de raffermir le ventre, de stabiliser le bassin et d'améliorer l'équilibre global du corps tout en protégeant les lombaires.
+      </p>
+    </div>
+
+    <div class="section-header">Exercices de la session</div>
+
+    <div class="exercise-list">
+
+      <!-- EXERCÍCIO 1 -->
+      <div class="exercise-card">
+        <div class="exercise-header">
+          <div class="exercise-name">1. Gainage Planche</div>
+          <span class="exercise-badge">3 séries x 40 sec</span>
+        </div>
+        
+        <div class="exercise-info">
+          <p><strong>🎯 À quoi ça sert :</strong> Renforce le muscle transverse en profondeur, affine la taille et protège la colonne vertébrale.</p>
+          <p><strong>💡 Comment faire :</strong> Placez vos avant-bras à plat sur le sol, les coudes alignés sous vos épaules. Vos jambes sont tendues vers l'arrière et votre corps forme une ligne droite de la tête jusqu'aux talons. Tenez la position sans bouger les hanches ni relâcher le ventre.</p>
+        </div>
+
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/hoPwUu8vvvw" title="Gainage Planche" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- EXERCÍCIO 2 (VÍDEO ATUALIZADO) -->
+      <div class="exercise-card">
+        <div class="exercise-header">
+          <div class="exercise-name">2. Relevé de jambes</div>
+          <span class="exercise-badge">3 séries x 12 à 15 rep</span>
+        </div>
+        
+        <div class="exercise-info">
+          <p><strong>🎯 À quoi ça sert :</strong> Cible la partie inférieure de la sangle abdominale (le bas du ventre).</p>
+          <p><strong>💡 Comment faire :</strong> Allongez-vous sur le dos, jambes tendues avec les talons décollés du sol. Contractez vos abdominaux en rentrant légèrement le ventre. Les épaules sont légèrement décollées du sol et les bras sont à plat le long du corps pour garder l'équilibre.</p>
+        </div>
+
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/ECSl36lXRB0" title="Relevé de jambes" allowfullscreen></iframe>
+        </div>
+      </div>
+
+      <!-- EXERCÍCIO 3 (VÍDEO ATUALIZADO) -->
+      <div class="exercise-card">
+        <div class="exercise-header">
+          <div class="exercise-name">3. Crunch classique</div>
+          <span class="exercise-badge">3 séries x 15 à 20 rep</span>
+        </div>
+        
+        <div class="exercise-info">
+          <p><strong>🎯 À quoi ça sert :</strong> Travaille le haut de la sangle abdominale pour tonifier le grand droit.</p>
+          <p><strong>💡 Comment faire :</strong> Allongez-vous sur le dos, pieds écartés de la largeur des hanches. Placez les mains derrière la tête sans tirer sur la nuque. Relevez le buste en plaquant le bas du dos au sol et en contractant les abdominaux.</p>
+        </div>
+
+        <div class="video-container">
+          <iframe src="https://www.youtube.com/embed/0t4t3IpiEao" title="Crunch classique" allowfullscreen></iframe>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
