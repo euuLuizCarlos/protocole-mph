@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Les Hormones & Le Poids - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --accent-purple: #c084fc;
+      --tag-bg: #2e1065;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back-btn {
+      color: var(--accent-blue);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px 16px;
+    }
+
+    .intro-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .intro-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .intro-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .info-box {
+      background-color: rgba(192, 132, 252, 0.1);
+      border: 1px solid rgba(192, 132, 252, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      color: #f0f6fc;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .info-box strong {
+      color: var(--accent-purple);
+    }
+
+    .section-header {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--accent-purple);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .hormones-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hormone-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow: hidden;
+    }
+
+    .hormone-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .hormone-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .hormone-badge {
+      background-color: var(--tag-bg);
+      color: var(--accent-purple);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      border: 1px solid #7e22ce;
+      white-space: nowrap;
+    }
+
+    .hormone-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .hormone-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .hormone-text strong {
+      color: var(--text-main);
+    }
+
+    .tip-box {
+      background-color: rgba(192, 132, 252, 0.08);
+      border-left: 3px solid var(--accent-purple);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+
+    .video-section {
+      margin-top: 32px;
+    }
+
+    .video-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      margin-top: 12px;
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="votre-corps.html" class="back-btn">‹ Votre Corps</a>
+  </header>
+
+  <main>
+    <div class="intro-card">
+      <h1 class="intro-title">Les Hormones & La Perte de Poids</h1>
+      <p class="intro-desc">
+        Vos hormones sont les véritables chefs d'orchestre de votre métabolisme. Elles dictent à votre organisme s'il doit brûler de l'énergie ou stocker des graisses, tout en régulant la sensation de faim et la satiété.
+      </p>
+    </div>
+
+    <div class="info-box">
+      🔬 <strong>Le saviez-vous ?</strong> Perdre du poids ne dépend pas seulement de ce que vous mangez, mais de la manière dont vos hormones traitent cette nourriture. Apprendre à les équilibrer est la clé pour débloquer votre métabolisme de façon durable !
+    </div>
+
+    <div class="section-header">Les 4 acteurs clés de votre silhouette</div>
+
+    <div class="hormones-list">
+
+      <!-- HORMONE 1: INSULINE -->
+      <div class="hormone-card">
+        <div class="hormone-header">
+          <div class="hormone-title">1. L'Insuline</div>
+          <span class="hormone-badge">L'hormone du stockage</span>
+        </div>
+        <!-- Foto de refeição rica em fibras/proteínas -->
+        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&auto=format&fit=crop&q=80" alt="Alimentation saine pour équilibrer l'insuline" class="hormone-img" />
+        <div class="hormone-text">
+          <p>Chaque fois que vous consommez des glucides ou des sucres, le pancréas libère de l'<strong>insuline</strong> pour faire baisser le taux de sucre sanguin. Lorsque l'insuline est constamment élevée (grignotages répétés, produits ultra-transformés), le corps passe en mode stockage et bloque la combustion des graisses.</p>
+        </div>
+        <div class="tip-box">
+          💡 <strong>Comment l'équilibrer :</strong> Privilégiez les glucides complexes à faible indice glycémique (avoine, patate douce, légumes) et évitez le grignotage continu.
+        </div>
+      </div>
+
+      <!-- HORMONE 2: CORTISOL -->
+      <div class="hormone-card">
+        <div class="hormone-header">
+          <div class="hormone-title">2. Le Cortisol</div>
+          <span class="hormone-badge">L'hormone du stress</span>
+        </div>
+        <!-- Foto de yoga / meditação / relaxamento -->
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&auto=format&fit=crop&q=80" alt="Relaxation et gestion du stress" class="hormone-img" />
+        <div class="hormone-text">
+          <p>Le <strong>cortisol</strong> est sécrété en réponse au stress physique ou émotionnel. Un taux élevé de cortisol sur une longue période favorise l'accumulation de graisse viscérale (autour du ventre) et déclenche des fringales de sucre ou de gras.</p>
+        </div>
+        <div class="tip-box">
+          💡 <strong>Comment l'équilibrer :</strong> Pratiquez de la mobilité douce, prenez des pauses régulières et priorisez la qualité de votre sommeil.
+        </div>
+      </div>
+
+      <!-- HORMONE 3: LEPTINE & GHRELIN -->
+      <div class="hormone-card">
+        <div class="hormone-header">
+          <div class="hormone-title">3. La Leptine & La Ghrelin</div>
+          <span class="hormone-badge">Les régulateurs de l'appétit</span>
+        </div>
+        <!-- Foto de sommeil / descanso -->
+        <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&auto=format&fit=crop&q=80" alt="Sommeil réparateur" class="hormone-img" />
+        <div class="hormone-text">
+          <p>La <strong>ghréline</strong> signale au cerveau qu'il est temps de manger, tandis que la <strong>leptine</strong> envoie le signal de satiété. Le manque de sommeil perturbe gravement ce duo : la ghréline augmente et la leptine chute, vous poussant à trop manger.</p>
+        </div>
+        <div class="tip-box">
+          💡 <strong>Comment les équilibrer :</strong> Dormez 7 à 8 heures par nuit et consommez suffisamment de protéines à chaque repas.
+        </div>
+      </div>
+
+      <!-- HORMONE 4: THYROÏDE -->
+      <div class="hormone-card">
+        <div class="hormone-header">
+          <div class="hormone-title">4. Les Hormones Thyroïdiennes</div>
+          <span class="hormone-badge">Le thermostat métabolique</span>
+        </div>
+        <!-- Foto de vitalidade / esporte outdoor / energia -->
+        <img src="https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&auto=format&fit=crop&q=80" alt="Énergie et métabolisme" class="hormone-img" />
+        <div class="hormone-text">
+          <p>Produites par la thyroïde (T3 et T4), ces hormones contrôlent la vitesse à laquelle votre corps brûle les calories au repos. Des régimes hypocaloriques trop drastiques et prolongés ralentissent la thyroïde pour économiser l'énergie.</p>
+        </div>
+        <div class="tip-box">
+          💡 <strong>Comment les préserver :</strong> Évitez les restrictions trop sévères et apportez suffisamment de nutriments essentiels (iode, sélénium, zinc).
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>

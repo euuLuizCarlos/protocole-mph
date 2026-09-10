@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Votre Corps - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --accent-purple: #c084fc;
+      --quiz-gold: #f59e0b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    /* En-tête */
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back-btn {
+      color: var(--accent-blue);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Contenu principal */
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px 16px;
+    }
+
+    .page-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .page-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+      line-height: 1.4;
+    }
+
+    /* Grille de cartes */
+    .modules-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .module-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .module-card:active {
+      transform: scale(0.98);
+      border-color: var(--accent-blue);
+    }
+
+    @media (hover: hover) {
+      .module-card:hover {
+        transform: translateY(-2px);
+        border-color: var(--accent-blue);
+        box-shadow: 0 6px 16px rgba(56, 189, 248, 0.15);
+      }
+    }
+
+    .card-badge {
+      align-self: flex-start;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .badge-weight {
+      background-color: rgba(56, 189, 248, 0.1);
+      color: var(--accent-blue);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    .badge-hormones {
+      background-color: rgba(192, 132, 252, 0.1);
+      color: var(--accent-purple);
+      border: 1px solid rgba(192, 132, 252, 0.3);
+    }
+
+    .badge-quiz {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: var(--quiz-gold);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .card-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .card-action {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent-blue);
+      margin-top: 4px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topo -->
+  <header>
+    <a href="index.html" class="back-btn">‹ Accueil</a>
+  </header>
+
+  <main>
+    <h1 class="page-title">Votre Corps & Métabolisme</h1>
+    <p class="page-subtitle">
+      Comprenez les mécanismes physiologiques qui influencent votre perte de poids et testez vos connaissances.
+    </p>
+
+    <div class="modules-list">
+
+      <!-- OPÇÃO 1: POR QUE NÃO EMAGREÇO -->
+      <a href="pourquoi-pas-perdre-poids.html" class="module-card">
+        <span class="card-badge badge-weight">Guide Pratique</span>
+        <div class="card-title">
+          <span>Pourquoi je ne perds pas de poids ?</span>
+          <span>➔</span>
+        </div>
+        <p class="card-desc">
+          Découvrez les erreurs courantes, l'impact du déficit calorique masqué, du stress et de la rétention d'eau sur vos résultats.
+        </p>
+        <div class="card-action">Lire l'article complet ›</div>
+      </a>
+
+      <!-- OPÇÃO 2: HORMÔNIOS -->
+      <a href="les-hormones.html" class="module-card">
+        <span class="card-badge badge-hormones">Analyse Biologique</span>
+        <div class="card-title">
+          <span>Les Hormones & Le Poids</span>
+          <span>➔</span>
+        </div>
+        <p class="card-desc">
+          Comprenez le rôle du cortisol, de l'insuline, de la leptine et de la thyroïde dans le stockage des graisses et la gestion de la faim.
+        </p>
+        <div class="card-action" style="color: var(--accent-purple);">Découvrir l'impact hormonal ›</div>
+      </a>
+
+      <!-- OPÇÃO 3: QUIZ DE HORMÔNIOS -->
+      <a href="quiz-hormones.html" class="module-card">
+        <span class="card-badge badge-quiz">Interactif</span>
+        <div class="card-title">
+          <span>Quiz : Testez vos connaissances</span>
+          <span>➔</span>
+        </div>
+        <p class="card-desc">
+          Répondez à un questionnaire interactif pour évaluer vos connaissances sur le fonctionnement de vos hormones et débloquer vos conseils.
+        </p>
+        <div class="card-action" style="color: var(--quiz-gold);">Commencer le quiz (5 questions) ›</div>
+      </a>
+
+    </div>
+  </main>
+
+</body>
+</html>

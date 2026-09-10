@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Quiz : Hormones & Métabolisme - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --quiz-gold: #f59e0b;
+      --correct-green: #22c55e;
+      --wrong-red: #ef4444;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back-btn {
+      color: var(--accent-blue);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px 16px;
+    }
+
+    .intro-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .intro-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .intro-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* Barre de Progression */
+    .progress-container {
+      width: 100%;
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 16px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+
+    .progress-bar-bg {
+      width: 100%;
+      height: 10px;
+      background-color: #0d1117;
+      border-radius: 5px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 10%;
+      background: linear-gradient(90deg, var(--accent-blue), var(--quiz-gold));
+      border-radius: 5px;
+      transition: width 0.3s ease;
+    }
+
+    /* Question Card */
+    .question-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .question-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.5;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .option-btn {
+      background-color: #0d1117;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 16px;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      text-align: left;
+      cursor: pointer;
+      transition: background-color 0.15s, border-color 0.15s;
+    }
+
+    .option-btn:hover {
+      border-color: var(--quiz-gold);
+      background-color: rgba(245, 158, 11, 0.05);
+    }
+
+    .option-btn.selected {
+      border-color: var(--quiz-gold);
+      background-color: rgba(245, 158, 11, 0.15);
+      font-weight: 600;
+    }
+
+    /* Écran de Résultats */
+    .results-container {
+      display: none;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .score-summary-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--quiz-gold);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .score-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--quiz-gold);
+      margin-bottom: 6px;
+    }
+
+    .score-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .score-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .restart-btn {
+      background-color: var(--quiz-gold);
+      color: #0d1117;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .correction-section-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .correction-list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .correction-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .correction-card.user-correct {
+      border-left: 4px solid var(--correct-green);
+    }
+
+    .correction-card.user-wrong {
+      border-left: 4px solid var(--wrong-red);
+    }
+
+    .correction-q-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1.4;
+    }
+
+    .user-choice-line {
+      font-size: 0.88rem;
+    }
+
+    .user-choice-line.correct-text {
+      color: var(--correct-green);
+    }
+
+    .user-choice-line.wrong-text {
+      color: var(--wrong-red);
+    }
+
+    .correct-answer-box {
+      background-color: rgba(34, 197, 94, 0.1);
+      border-left: 3px solid var(--correct-green);
+      padding: 10px 12px;
+      border-radius: 6px;
+      font-size: 0.88rem;
+      color: #f0f6fc;
+      line-height: 1.5;
+    }
+
+    .correct-answer-box strong {
+      color: var(--correct-green);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="votre-corps.html" class="back-btn">‹ Votre Corps</a>
+  </header>
+
+  <main>
+    <div class="intro-card" id="introCard">
+      <h1 class="intro-title">Quiz : Hormones & Métabolisme</h1>
+      <p class="intro-desc">
+        Testez vos connaissances à travers 10 questions interactives. Répondez à chaque question, découvrez votre score final et analysez vos explications personnalisées.
+      </p>
+    </div>
+
+    <!-- Barre de Progression -->
+    <div class="progress-container" id="progressContainer">
+      <div class="progress-header">
+        <span id="progressText">Question 1 sur 10</span>
+        <span id="percentText">10%</span>
+      </div>
+      <div class="progress-bar-bg">
+        <div class="progress-bar-fill" id="progressBarFill"></div>
+      </div>
+    </div>
+
+    <!-- Container da Pergunta Ativa -->
+    <div class="question-card" id="questionCard">
+      <div class="question-title" id="questionTitle">Chargement...</div>
+      <div class="options-list" id="optionsList"></div>
+    </div>
+
+    <!-- Écran des Résultats -->
+    <div class="results-container" id="resultsContainer">
+      <div class="score-summary-card">
+        <div class="score-number" id="finalScoreText">0 / 10</div>
+        <div class="score-title" id="finalTitleText">Bravo !</div>
+        <div class="score-desc" id="finalDescText"></div>
+        <button class="restart-btn" onclick="restartQuiz()">Recommencer le Quiz</button>
+      </div>
+
+      <div class="correction-section-title">Analyse détaillée de vos réponses</div>
+      <div class="correction-list" id="correctionList"></div>
+    </div>
+  </main>
+
+  <script>
+    const quizData = [
+      {
+        question: "1. Quelle hormone est produite par le pancréas pour réguler le taux de sucre sanguin et favoriser le stockage ?",
+        options: ["A) Le Cortisol", "B) L'Insuline", "C) La Leptine", "D) L'Adrénaline"],
+        correct: 1,
+        explanation: "L'insuline est libérée lorsque le taux de glucose augmente dans le sang. Un niveau constamment élevé d'insuline bloque la combustion des graisses et stimule leur stockage."
+      },
+      {
+        question: "2. Quel est l'effet principal d'un niveau élevé de Cortisol (hormone du stress) sur le métabolisme ?",
+        options: ["A) Il accélère la perte de poids", "B) Il favorise le stockage de graisse abdominale", "C) Il améliore le sommeil profond", "D) Il abaisse la glycémie"],
+        correct: 1,
+        explanation: "Le cortisol élevé signale un état d'urgence au corps, ce qui favorise l'accumulation de graisse viscérale autour du ventre et déclenche des fringales d'aliments riches."
+      },
+      {
+        question: "3. Quelle hormone est sécrétée par les cellules graisseuses pour envoyer le signal de satiété au cerveau ?",
+        options: ["A) La Ghréline", "B) La Leptine", "C) La Thyroxine", "D) L'Estrogène"],
+        correct: 1,
+        explanation: "La leptine informe le cerveau que les réserves d'énergie sont suffisantes, réduisant ainsi la faim. Un manque de sommeil réduit la sensibilité à la leptine."
+      },
+      {
+        question: "4. Quelle hormone stimule directement l'appétit et signale au cerveau qu'il est temps de manger ?",
+        options: ["A) La Ghréline", "B) L'Insuline", "C) Le Cortisol", "D) La Mélatonine"],
+        correct: 0,
+        explanation: "La ghréline est produite principalement dans l'estomac. Ses niveaux augmentent avant les repas ou en cas de privation de sommeil, ce qui augmente la sensation de faim."
+      },
+      {
+        question: "5. Que provoque un manque de sommeil chronique (moins de 6h par nuit) sur les hormones de l'appétit ?",
+        options: ["A) Augmentation de la Leptine et baisse de la Ghréline", "B) Baisse de la Ghréline et baisse du Cortisol", "C) Augmentation de la Ghréline et baisse de la Leptine", "D) Aucun impact hormonal"],
+        correct: 2,
+        explanation: "Dormir peu augmente la ghréline (faim) et diminue la leptine (satiété), ce qui entraîne une hausse des fringales incontrôlées au cours de la journée."
+      },
+      {
+        question: "6. Quel est le rôle principal des hormones thyroïdiennes (T3 et T4) ?",
+        options: ["A) Contrôler le niveau d'eau dans le corps", "B) Réguler la vitesse du métabolisme de base", "C) Stimuler la croissance osseuse", "D) Produire des globules rouges"],
+        correct: 1,
+        explanation: "Les hormones thyroïdiennes agissent comme le thermostat de l'organisme en contrôlant la vitesse à laquelle les cellules brûlent les calories au repos."
+      },
+      {
+        question: "7. Que se passe-t-il lorsque vous suivez un régime hypocalorique extrêmement drastique trop longtemps ?",
+        options: ["A) Le métabolisme s'accélère indéfiniment", "B) La thyroïde ralentit le métabolisme pour économiser l'énergie", "C) L'insuline augmente fortement", "D) Le cortisol s'annule complètement"],
+        correct: 1,
+        explanation: "Face à une restriction trop sévère, le corps déclenche une adaptation métabolique en ralentissant la thyroïde pour préserver ses réserves vitales."
+      },
+      {
+        question: "8. Quel type d'aliment provoque le plus fort pic d'insuline après sa consommation ?",
+        options: ["A) Les protéines maigres", "B) Les graisses saines (avocat, huile d'olive)", "C) Les sucres raffinés et glucides simples", "D) Les légumes verts à fortes fibres"],
+        correct: 2,
+        explanation: "Les glucides simples et sucres raffinés sont rapidement absorbés dans le sang, provoquant une forte hausse de glycémie et un pic massif d'insuline."
+      },
+      {
+        question: "9. Pourquoi la pratique régulière du sport aide-t-elle à réguler l'insuline ?",
+        options: ["A) Elle détruit le pancréas", "B) Elle augmente la sensibilité à l'insuline des muscles", "C) Elle empêche l'absorption des protéines", "D) Elle stoppe la production de glycogène"],
+        correct: 1,
+        explanation: "L'exercice physique permet aux muscles d'absorber le glucose plus efficacement sans nécessiter une quantité excessive d'insuline dans le sang."
+      },
+      {
+        question: "10. Quel est l'indicateur le plus fiable pour suivre sa perte de graisse sans se faire tromper par la rétention d'eau ?",
+        options: ["A) Le chiffre sur le pèse-personne chaque matin", "B) Les mensurations (tour de taille) et les photos", "C) Le nombre de calories brûlées sur une montre connectée", "D) La quantité de transpiration"],
+        correct: 1,
+        explanation: "Le poids sur la balance fluctue en fonction de l'eau, de la digestion et du gain musculaire. Les mensurations et les photos mesurent directement la perte de centimètres."
+      }
+    ];
+
+    let currentQuestion = 0;
+    let userAnswers = [];
+
+    function loadQuestion() {
+      const q = quizData[currentQuestion];
+      
+      // Update Progress Bar
+      const total = quizData.length;
+      const progressPercent = Math.round(((currentQuestion + 1) / total) * 100);
+      document.getElementById('progressText').innerText = `Question ${currentQuestion + 1} sur ${total}`;
+      document.getElementById('percentText').innerText = `${progressPercent}%`;
+      document.getElementById('progressBarFill').style.width = `${progressPercent}%`;
+
+      // Set Question Content
+      document.getElementById('questionTitle').innerText = q.question;
+      
+      const optionsContainer = document.getElementById('optionsList');
+      optionsContainer.innerHTML = '';
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'option-btn';
+        btn.innerText = opt;
+        btn.onclick = () => selectOption(idx);
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function selectOption(index) {
+      userAnswers.push(index);
+      currentQuestion++;
+
+      if (currentQuestion < quizData.length) {
+        loadQuestion();
+      } else {
+        showFinalResults();
+      }
+    }
+
+    function showFinalResults() {
+      document.getElementById('questionCard').style.display = 'none';
+      document.getElementById('progressContainer').style.display = 'none';
+      document.getElementById('introCard').style.display = 'none';
+
+      const resultsContainer = document.getElementById('resultsContainer');
+      resultsContainer.style.display = 'flex';
+
+      // Compute Score
+      let score = 0;
+      userAnswers.forEach((ans, idx) => {
+        if (ans === quizData[idx].correct) {
+          score++;
+        }
+      });
+
+      const total = quizData.length;
+      document.getElementById('finalScoreText').innerText = `${score} / ${total}`;
+
+      const titleElem = document.getElementById('finalTitleText');
+      const descElem = document.getElementById('finalDescText');
+
+      if (score === 10) {
+        titleElem.innerText = "🏆 Score Parfait ! Grand Expert !";
+        descElem.innerText = "Félicitations, vous maîtrisez parfaitement le fonctionnement hormonal et métabolique. Vous avez toutes les clés en main !";
+      } else if (score >= 7) {
+        titleElem.innerText = "👏 Excellent Niveau !";
+        descElem.innerText = "Vous possédez de très solides connaissances physiologiques. Consultez la correction ci-dessous pour perfectionner vos derniers détails !";
+      } else if (score >= 5) {
+        titleElem.innerText = "👍 Bonnes Bases !";
+        descElem.innerText = "Vous comprenez les principes essentiels. Analysez la correction détaillée ci-dessous pour combler vos petites hésitations.";
+      } else {
+        titleElem.innerText = "📚 Des notions à consolider";
+        descElem.innerText = "Pas d'inquiétude ! L'important est d'apprendre. Prenez le temps de lire attentivement les explications ci-dessous.";
+      }
+
+      // Generate Correction List
+      const correctionList = document.getElementById('correctionList');
+      correctionList.innerHTML = '';
+
+      quizData.forEach((q, idx) => {
+        const userChoice = userAnswers[idx];
+        const isCorrect = (userChoice === q.correct);
+
+        const card = document.createElement('div');
+        card.className = `correction-card ${isCorrect ? 'user-correct' : 'user-wrong'}`;
+
+        const qTitle = document.createElement('div');
+        qTitle.className = 'correction-q-title';
+        qTitle.innerText = q.question;
+
+        const userChoiceElem = document.createElement('div');
+        userChoiceElem.className = `user-choice-line ${isCorrect ? 'correct-text' : 'wrong-text'}`;
+        userChoiceElem.innerHTML = isCorrect 
+          ? `<strong>Votre réponse :</strong> ${q.options[userChoice]} (Exact ✅)` 
+          : `<strong>Votre réponse :</strong> ${q.options[userChoice]} (Incorrect ❌)`;
+
+        const box = document.createElement('div');
+        box.className = 'correct-answer-box';
+        box.innerHTML = `<strong>Réponse correcte :</strong> ${q.options[q.correct]}<br><br>💡 <strong>Explication :</strong> ${q.explanation}`;
+
+        card.appendChild(qTitle);
+        card.appendChild(userChoiceElem);
+        card.appendChild(box);
+
+        correctionList.appendChild(card);
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function restartQuiz() {
+      currentQuestion = 0;
+      userAnswers = [];
+
+      document.getElementById('questionCard').style.display = 'flex';
+      document.getElementById('progressContainer').style.display = 'flex';
+      document.getElementById('introCard').style.display = 'block';
+      document.getElementById('resultsContainer').style.display = 'none';
+
+      loadQuestion();
+    }
+
+    // Initialize Quiz
+    loadQuestion();
+  </script>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Pourquoi je ne perds pas de graisse ? - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --tag-bg: #1e3a8a;
+      --accent-green: #22c55e;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .back-btn {
+      color: var(--accent-blue);
+      font-size: 1rem;
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 20px 16px;
+    }
+
+    .intro-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+
+    .intro-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
+    .intro-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .reassurance-box {
+      background-color: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 12px;
+      padding: 16px;
+      color: #f0f6fc;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 24px;
+    }
+
+    .reassurance-box strong {
+      color: var(--accent-green);
+    }
+
+    .section-header {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--accent-blue);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .reasons-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .reason-card {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      overflow: hidden;
+    }
+
+    .reason-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .reason-number {
+      background-color: var(--tag-bg);
+      color: var(--accent-blue);
+      font-size: 0.8rem;
+      font-weight: 700;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #2563eb;
+      flex-shrink: 0;
+    }
+
+    .reason-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .reason-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+    }
+
+    .reason-text {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .reason-text strong {
+      color: var(--text-main);
+    }
+
+    .tip-box {
+      background-color: rgba(56, 189, 248, 0.08);
+      border-left: 3px solid var(--accent-blue);
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      color: var(--text-main);
+    }
+
+    .video-section {
+      margin-top: 32px;
+    }
+
+    .video-container {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background-color: #000;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      margin-top: 12px;
+    }
+
+    .video-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="votre-corps.html" class="back-btn">‹ Votre Corps</a>
+  </header>
+
+  <main>
+    <div class="intro-card">
+      <h1 class="intro-title">Pourquoi je ne perds pas de graisse ?</h1>
+      <p class="intro-desc">
+        Vous avez l'impression de tout faire correctement, de surveiller vos repas et de bouger régulièrement, mais la balance reste désespérément bloquée ? Ne vous inquiétez pas : c'est une situation extrêmement fréquente et tout à fait normale.
+      </p>
+    </div>
+
+    <!-- MENSAGEM RASSURANTE -->
+    <div class="reassurance-box">
+      ✨ <strong>Rassurez-vous, ce n'est absolument pas de votre faute !</strong> Le corps humain est une machine complexe qui cherche en permanence à se protéger. La stagnation n'est pas un échec, c'est simplement un signal que votre organisme envoie. Et la bonne nouvelle ? <strong>Vous êtes exactement au bon endroit pour débloquer la situation.</strong> Ensemble, nous allons réajuster quelques détails simples pour relancer votre métabolisme sans frustration !
+    </div>
+
+    <div class="section-header">Comprendre les mécanismes du blocage</div>
+
+    <div class="reasons-list">
+
+      <!-- FACTEUR 1 -->
+      <div class="reason-card">
+        <div class="reason-header">
+          <div class="reason-number">1</div>
+          <div class="reason-title">Le piège des "calories cachées"</div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?w=800&auto=format&fit=crop&q=80" alt="Alimentation équilibrée" class="reason-img" />
+        <div class="reason-text">
+          <p>Même en mangeant très sainement, de petits détails invisibles peuvent faire basculer l'équilibre calorique : un filet d'huile d'olive un peu généreux, une poignée de fruits secs, des sauces ou quelques boissons aromatisées. Le corps ne fait pas de différence entre de la "bonne" graisse et un excès d'énergie !</p>
+        </div>
+        <div class="tip-box">
+          💡 <strong>Pas de panique :</strong> Il ne s'agit pas de vous priver, mais simplement de mesurer vos portions pendant 3 ou 4 jours pour reprendre conscience des quantités réelles.
+        </div>
+      </div>
+
+      <!-- FACTEUR 2 -->
+      <div class="reason-card">
+        <div class="reason-header">
+          <div class="reason-number">2</div>
+          <div class="reason-title">Le stress et le manque de sommeil</div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=800&auto=format&fit=crop&q=80" alt="Sommeil et relaxation" class="reason-img" />
+        <div class="reason-text">
+          <p>Lorsque vous êtes fatigué(e) ou stressé(e), votre corps sécrète davantage de <strong>cortisol</strong>. Cette hormone signale à votre organisme qu'il est en danger, ce qui l'incite à stocker les graisses (particulièrement au niveau abdominal) et à retenir l'eau. Un corps fatigué résiste à la perte de poids.</p>
+        </div>
+        <div class="tip-box">
+          💡 <strong>Notre conseil :</strong> Accordez-vous du temps de repos. Dormir 7 à 8 heures est tout aussi important que votre entraînement !
+        </div>
+      </div>
+
+      <!-- FACTEUR 3 -->
+      <div class="reason-card">
+        <div class="reason-header">
+          <div class="reason-number">3</div>
+          <div class="reason-title">La rétention d'eau et le gain musculaire</div>
+        </div>
+        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&auto=format&fit=crop&q=80" alt="Mesure du corps" class="reason-img" />
+        <div class="reason-text">
+          <p>Si vous avez repris le sport avec nos séances, bravo ! Vos muscles se renforcent, se tonifient et retiennent temporairement de l'eau pour récupérer. La graisse diminue, mais le muscle étant plus dense, la balance ne bouge pas. Vous vous affinez sans le voir sur le pèse-personne.</p>
+        </div>
+        <div class="tip-box">
+          💡 <strong>Rappelez-vous :</strong> La balance est un mauvais indicateur. Fiez-vous plutôt à la manière dont vos vêtements tombent et à vos photos de progression !
+        </div>
+      </div>
+
+    </div>
+
+    <!-- VÍDEO EXPLICATIVO EM FRANCÊS -->
+    <div class="video-section">
+      <div class="section-header">Vidéo Explicative</div>
+      <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 8px;">
+        Découvrez comment relancer un métabolisme ralenti et débloquer la perte de poids :
+      </p>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/CPirHyQPddM" title="2 semaines pour relancer un métabolisme bloqué" allowfullscreen></iframe>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>
