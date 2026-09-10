@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Routine de Déblocage - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --accent-teal: #14b8a6;
+      --quiz-gold: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: var(--bg-principal); color: var(--text-main); display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding-bottom: 40px; }
+    
+    header { width: 100%; max-width: 900px; background-color: var(--bg-card); padding: 16px 20px; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 10; }
+    .back-btn { color: var(--accent-blue); font-size: 1rem; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+
+    main { width: 100%; max-width: 900px; padding: 20px 16px; display: flex; flex-direction: column; gap: 20px; }
+
+    .intro-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; border-left: 4px solid var(--accent-teal); }
+    .intro-title { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .intro-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
+    .period-badge { align-self: flex-start; font-size: 0.75rem; font-weight: 800; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; letter-spacing: 0.5px; }
+    .badge-morning { background-color: rgba(245, 158, 11, 0.15); color: var(--quiz-gold); border: 1px solid rgba(245, 158, 11, 0.4); }
+    .badge-afternoon { background-color: rgba(56, 189, 248, 0.15); color: var(--accent-blue); border: 1px solid rgba(56, 189, 248, 0.4); }
+    .badge-night { background-color: rgba(168, 85, 247, 0.15); color: #c084fc; border: 1px solid rgba(168, 85, 247, 0.4); }
+
+    .routine-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .routine-header { display: flex; flex-direction: column; gap: 6px; }
+    .routine-title { font-size: 1.2rem; font-weight: 700; color: #ffffff; }
+
+    .instruction-box { background-color: #0d1117; border: 1px solid var(--border-color); border-radius: 10px; padding: 14px; font-size: 0.88rem; line-height: 1.6; display: flex; flex-direction: column; gap: 8px; }
+    .instruction-box strong { color: var(--text-main); }
+    .tip-tag { color: var(--accent-teal); font-size: 0.82rem; font-weight: 600; }
+
+    .video-container { width: 100%; aspect-ratio: 16 / 9; background-color: #000; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-color); }
+    .video-container iframe { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="mouvement.html" class="back-btn">‹ Mobilité & Mouvement</a>
+  </header>
+
+  <main>
+    <div class="intro-card">
+      <h1 class="intro-title">Déblocage Express Quotidien</h1>
+      <p class="intro-desc">
+        Trois routines vidéo ciblées pour libérer la nuque, assouplir le dos et détendre la zone lombaire tout au long de la journée.
+      </p>
+    </div>
+
+    <!-- MATIN -->
+    <div class="routine-card">
+      <div class="routine-header">
+        <span class="period-badge badge-morning">☀️ Le Matin</span>
+        <div class="routine-title">1. Soulager la Nuque & les Cervicales (Yoga Thérapie)</div>
+      </div>
+
+      <div class="instruction-box">
+        <p><strong>💡 Pourquoi le faire :</strong> Relâche la tension accumulée sur la nuque, détend les épaules et libère la mâchoire dès le réveil.</p>
+        <p><strong>🎯 Exécution :</strong> Assise en tailleur ou sur une chaise (dos droit), réalisez l'enroulement doux du menton vers le cou, les étirements latéraux avec pression de la main et l'exercice de décontraction de la mâchoire.</p>
+        <p class="tip-tag">✨ Temps conseillé : 5 minutes au calme le matin.</p>
+      </div>
+
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/u9JpPQi55ls" title="5 minutes d'étirements pour soulager la nuque et les cervicales" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- APRÈS-MIDI -->
+    <div class="routine-card">
+      <div class="routine-header">
+        <span class="period-badge badge-afternoon">🌤️ L'Après-Midi (Pause Active)</span>
+        <div class="routine-title">2. Étirements & Assouplissement du Dos</div>
+      </div>
+
+      <div class="instruction-box">
+        <p><strong>💡 Pourquoi le faire :</strong> Redonne de la mobilité à la colonne dorsale et annule l'effet "dos voûté" provoqué par les heures assises.</p>
+        <p><strong>🎯 Exécution :</strong> Suivez les ouvertures de la cage thoracique e torsions douces du buste pour réoxygéner les muscles du dos e relancer votre énergie en milieu de journée.</p>
+        <p class="tip-tag">✨ Temps conseillé : Pendant votre pause de l'après-midi.</p>
+      </div>
+
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/VNrpZyJuxyQ" title="Étirements et assouplissement du dos" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <!-- SOIR -->
+    <div class="routine-card">
+      <div class="routine-header">
+        <span class="period-badge badge-night">🌙 Le Soir</span>
+        <div class="routine-title">3. Soulager le Bas du Dos & la Sciatique</div>
+      </div>
+
+      <div class="instruction-box">
+        <p><strong>💡 Pourquoi le faire :</strong> Libère la pression du nerf sciatique, détend le psoas et soulage immédiatement la zone lombaire avant la nuit.</p>
+        <p><strong>🎯 Exécution :</strong> Réalisez la séance au sol en suivant les basculements du bassin, les étirements fessiers et les flexions douces pour décompresser complètement les vertèbres lombaires.</p>
+        <p class="tip-tag">✨ Temps conseillé : Avant de dormir ou au retour du travail.</p>
+      </div>
+
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/0FZGglbp8Z0" title="Soulager le bas du dos et la sciatique" allowfullscreen></iframe>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

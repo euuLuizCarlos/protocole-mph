@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Correction Posturale & Anti-Douleur - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --accent-purple: #c084fc;
+      --accent-green: #22c55e;
+      --wrong-red: #ef4444;
+      --quiz-gold: #f59e0b;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: var(--bg-principal); color: var(--text-main); display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding-bottom: 40px; }
+
+    header { width: 100%; max-width: 900px; background-color: var(--bg-card); padding: 16px 20px; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 10; }
+    .back-btn { color: var(--accent-blue); font-size: 1rem; font-weight: 600; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+
+    main { width: 100%; max-width: 900px; padding: 20px 16px; display: flex; flex-direction: column; gap: 20px; }
+
+    .intro-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; border-left: 4px solid var(--accent-purple); }
+    .intro-title { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .intro-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
+    /* DIAGNOSTIC EXPRESS */
+    .diag-box { background-color: rgba(192, 132, 252, 0.08); border: 1px solid rgba(192, 132, 252, 0.25); border-radius: 12px; padding: 16px; display: flex; flex-direction: column; gap: 10px; }
+    .diag-title { font-size: 0.95rem; font-weight: 700; color: var(--accent-purple); text-transform: uppercase; letter-spacing: 0.5px; }
+    .diag-item { font-size: 0.85rem; color: var(--text-muted); display: flex; align-items: flex-start; gap: 8px; line-height: 1.4; }
+
+    /* SEÇÃO DE REGIÕES */
+    .section-title { font-size: 1.05rem; font-weight: 700; color: var(--accent-blue); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px; }
+
+    .posture-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .posture-head { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border-color); padding-bottom: 10px; }
+    .posture-title { font-size: 1.15rem; font-weight: 700; color: #fff; }
+    .zone-tag { background-color: #0d1117; border: 1px solid var(--border-color); color: var(--accent-blue); font-size: 0.72rem; font-weight: 700; padding: 4px 8px; border-radius: 6px; }
+
+    .detail-grid { display: flex; flex-direction: column; gap: 10px; }
+    .detail-item { background-color: #0d1117; border: 1px solid var(--border-color); border-radius: 10px; padding: 12px 14px; font-size: 0.88rem; line-height: 1.5; }
+    .detail-item.error { border-left: 3px solid var(--wrong-red); }
+    .detail-item.fix { border-left: 3px solid var(--accent-green); }
+    .detail-item.exercise { border-left: 3px solid var(--accent-blue); }
+
+    .detail-item strong { display: block; margin-bottom: 2px; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    .detail-item.error strong { color: var(--wrong-red); }
+    .detail-item.fix strong { color: var(--accent-green); }
+    .detail-item.exercise strong { color: var(--accent-blue); }
+
+    /* VÍDEO */
+    .video-section { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+    .video-container { width: 100%; aspect-ratio: 16 / 9; background-color: #000; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-color); }
+    .video-container iframe { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="mouvement.html" class="back-btn">‹ Mobilité & Mouvement</a>
+  </header>
+
+  <main>
+    <div class="intro-card">
+      <h1 class="intro-title">Guide De Correction Posturale</h1>
+      <p class="intro-desc">
+        Identifiez les mauvaises habitudes qui fatiguent vos articulations et appliquez les corrections ergonomiques simples pour éliminer la douleur au quotidien.
+      </p>
+    </div>
+
+    <!-- AUTO-DIAGNOSTIC -->
+    <div class="diag-box">
+      <div class="diag-title">🔍 Auto-Diagnostic Rapide</div>
+      <div class="diag-item">
+        <span>📍</span>
+        <div><strong>Tension dans la nuque ?</strong> Souvent provoquée par la tête inclinée vers l'avant sur les écrans (Text-Neck).</div>
+      </div>
+      <div class="diag-item">
+        <span>📍</span>
+        <div><strong>Bas du dos engourdi ?</strong> Causé par la rétraction du psoas et la bascule du bassin en position assise prolongée.</div>
+      </div>
+    </div>
+
+    <div class="section-header">Corrections Par Zone Corporelle</div>
+
+    <!-- ZONE 1: CERVICALES & ÉPAULES -->
+    <div class="posture-card">
+      <div class="posture-head">
+        <div class="posture-title">1. Cervicales & Haut du Dos</div>
+        <span class="zone-tag">Tête & Trapèzes</span>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-item error">
+          <strong>❌ Erreur Fréquente :</strong>
+          Avancer la tête vers l'écran. Chaque centimètre vers l'avant ajoute 2,5 kg de pression sur la nuque.
+        </div>
+        <div class="detail-item fix">
+          <strong>✅ Correction Ergonomique :</strong>
+          Reculez le menton horizontalement (comme pour aligner les oreilles avec les épaules) sans baisser le regard. Rehaussez votre écran à hauteur des yeux.
+        </div>
+        <div class="detail-item exercise">
+          <strong>💡 Exercice Correctif :</strong>
+          10 rétractions cervicales (Double Chin) en maintenant la position 3 secondes à chaque fois.
+        </div>
+      </div>
+    </div>
+
+    <!-- ZONE 2: CAGE THORACIQUE & ÉPAULES VOÛTÉES -->
+    <div class="posture-card">
+      <div class="posture-head">
+        <div class="posture-title">2. Épaules Enroulées & Dos Voûté</div>
+        <span class="zone-tag">Posture Thoracique</span>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-item error">
+          <strong>❌ Erreur Fréquente :</strong>
+          Forcer les épaules vers l'arrière en bombant le torse de manière rigide (impossible à tenir plus de 2 minutes).
+        </div>
+        <div class="detail-item fix">
+          <strong>✅ Correction Ergonomique :</strong>
+          Faites glisser les omoplates vers le bas et vers l'intérieur, comme si vous vouliez les ranger dans vos poches arrières de pantalon.
+        </div>
+        <div class="detail-item exercise">
+          <strong>💡 Exercice Correctif :</strong>
+          Ouverture de poitrine contre un encadrement de porte (2 x 30 secondes).
+        </div>
+      </div>
+    </div>
+
+    <!-- ZONE 3: LOMBAIRES & BASSIN -->
+    <div class="posture-card">
+      <div class="posture-head">
+        <div class="posture-title">3. Région Lombaire & Bassin</div>
+        <span class="zone-tag">Bas du Dos</span>
+      </div>
+
+      <div class="detail-grid">
+        <div class="detail-item error">
+          <strong>❌ Erreur Fréquente :</strong>
+          Glisser sur le bas de la chaise et s'asseoir sur le coccyx, ce qui efface la cambrure naturelle de la colonne.
+        </div>
+        <div class="detail-item fix">
+          <strong>✅ Correction Ergonomique :</strong>
+          Collez les fesses au fond du siège et ajustez la hauteur pour garder un angle de 90° au niveau des genoux et des hanches.
+        </div>
+        <div class="detail-item exercise">
+          <strong>💡 Exercice Correctif :</strong>
+          Bascule du bassin assise (Antéversion / Rétroversion) 12 fois pour débloquer les lombaires.
+        </div>
+      </div>
+    </div>
+
+    <!-- VÍDEO COMPLEMENTAR DE MAJOR MOUVEMENT -->
+    <div class="video-section">
+      <div class="posture-title">Séance Vidéo : Améliorer Sa Posture (Major Mouvement)</div>
+      <p style="font-size: 0.88rem; color: var(--text-muted);">
+        Découvrez 3 conseils simples et efficaces d'un kinésithérapeute pour ouvrir les épaules, renforcer les fixateurs d'omoplates et regagner de la mobilité dorsale en 6 minutes :
+      </p>
+
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/b09fKBMjMBY" title="Améliore ta posture MAINTENANT (Major Mouvement)" allowfullscreen></iframe>
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

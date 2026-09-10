@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Discipline & Constance - InfoApp</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-blue: #38bdf8;
+      --accent-pink: #f43f5e;
+      --accent-green: #22c55e;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background-color: var(--bg-principal); color: var(--text-main); display: flex; flex-direction: column; align-items: center; min-height: 100vh; padding-bottom: 40px; }
+
+    header { width: 100%; max-width: 900px; background-color: var(--bg-card); padding: 16px 20px; border-bottom: 1px solid var(--border-color); position: sticky; top: 0; z-index: 10; }
+    .back-btn { color: var(--accent-blue); font-size: 1rem; font-weight: 600; text-decoration: none; }
+
+    main { width: 100%; max-width: 900px; padding: 20px 16px; display: flex; flex-direction: column; gap: 20px; }
+
+    .intro-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; border-left: 4px solid var(--accent-pink); }
+    .intro-title { font-size: 1.4rem; font-weight: 800; color: #fff; margin-bottom: 8px; }
+    .intro-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+
+    .guide-card { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .guide-title { font-size: 1.15rem; font-weight: 700; color: #fff; }
+    
+    .strategy-box { background-color: #0d1117; border: 1px solid var(--border-color); border-radius: 10px; padding: 14px; font-size: 0.88rem; line-height: 1.6; display: flex; flex-direction: column; gap: 6px; }
+    .strategy-box strong { color: var(--accent-pink); }
+
+    .video-section { background-color: var(--bg-card); border: 1px solid var(--border-color); border-radius: 14px; padding: 20px; display: flex; flex-direction: column; gap: 12px; }
+    .video-container { width: 100%; aspect-ratio: 16 / 9; background-color: #000; border-radius: 10px; overflow: hidden; border: 1px solid var(--border-color); }
+    .video-container iframe { width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="mentalité.html" class="back-btn">‹ Mental & Motivation</a>
+  </header>
+
+  <main>
+    <div class="intro-card">
+      <h1 class="intro-title">Vaincre la Procrastination & Maintenir la Constance</h1>
+      <p class="intro-desc">
+        L'autodiscipline n'est pas une punition : c'est la liberté de renoncer aux plaisirs immédiats pour obtenir ce qui compte vraiment pour vous sur le long terme.
+      </p>
+    </div>
+
+    <!-- STRATÉGIES PRATIQUES -->
+    <div class="guide-card">
+      <h2 class="guide-title">Les 3 Piliers de l'Autodiscipline</h2>
+
+      <div class="strategy-box">
+        <strong>1. Associer l'Effort au Plaisir :</strong>
+        Combinez une tâche difficile avec quelque chose de gratifiant (ex: écouter votre podcast préféré pendant la cuisine de vos repas sains ou regarder une série pendant votre séance).
+      </div>
+
+      <div class="strategy-box">
+        <strong>2. Incarner la Personne que Vous Voulez Devenir :</strong>
+        Ne dites pas "j'essaie de faire du sport", mais "je suis une personne active". Prenez vos décisions quotidiennes en vous demandant ce que ferait cette version de vous-même.
+      </div>
+
+      <div class="strategy-box">
+        <strong>3. Se Focaliser sur le Système, Pas l'Objectif :</strong>
+        Oubliez le chiffre sur la balance pour un instant et concentrez-vous uniquement sur la répétition quotidienne de vos micro-actions simples.
+      </div>
+    </div>
+
+    <!-- VÍDEO ATUALIZADO -->
+    <div class="video-section">
+      <h2 class="guide-title" style="font-size: 1.1rem; color: var(--accent-blue);">Vidéo : Comment l'Autodiscipline Rend Libre (Tom Chain)</h2>
+      <p style="font-size: 0.88rem; color: var(--text-muted);">
+        Découvrez les 8 habitudes clés pour développer votre mental et rendre vos actions quotidiennes naturelles et sans souffrance :
+      </p>
+
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/zUVJiZ8ez3I" title="Comment l'Autodiscipline m'a Rendu LIBRE" allowfullscreen></iframe>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
