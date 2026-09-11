@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Mobilité & Récupération - InfoApp</title>
+  <title>Mental & Motivation - InfoApp</title>
   <style>
     :root {
       --bg-principal: #0d1117;
@@ -12,7 +12,7 @@
       --text-main: #f0f6fc;
       --text-muted: #8b949e;
       --accent-blue: #38bdf8;
-      --accent-teal: #14b8a6;
+      --accent-pink: #f43f5e;
       --quiz-gold: #f59e0b;
     }
 
@@ -79,56 +79,32 @@
       line-height: 1.5;
     }
 
-    /* CARD DE EXPLICAÇÃO DO MÓDULO */
-    .concept-card {
+    /* CARD DE ENQUADRAMENTO MENTAL */
+    .mindset-card {
       background-color: var(--bg-card);
       border: 1px solid var(--border-color);
       border-radius: 14px;
       padding: 20px;
+      border-left: 4px solid var(--accent-pink);
       display: flex;
       flex-direction: column;
       gap: 12px;
     }
 
-    .concept-title {
+    .mindset-title {
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--accent-teal);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      color: var(--accent-pink);
     }
 
-    .concept-text {
+    .mindset-text {
       font-size: 0.9rem;
       color: var(--text-muted);
       line-height: 1.6;
     }
 
-    .concept-text strong {
+    .mindset-text strong {
       color: var(--text-main);
-    }
-
-    .benefits-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 10px;
-      margin-top: 8px;
-    }
-
-    .benefit-item {
-      background-color: #0d1117;
-      border: 1px solid var(--border-color);
-      border-radius: 10px;
-      padding: 12px;
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
-    .benefit-item strong {
-      color: var(--accent-teal);
-      display: block;
-      margin-bottom: 4px;
     }
 
     /* LISTA DE CONTEÚDOS */
@@ -162,14 +138,14 @@
 
     .module-card:active {
       transform: scale(0.98);
-      border-color: var(--accent-teal);
+      border-color: var(--accent-pink);
     }
 
     @media (hover: hover) {
       .module-card:hover {
         transform: translateY(-2px);
-        border-color: var(--accent-teal);
-        box-shadow: 0 6px 16px rgba(20, 184, 166, 0.15);
+        border-color: var(--accent-pink);
+        box-shadow: 0 6px 16px rgba(244, 63, 94, 0.15);
       }
     }
 
@@ -183,13 +159,13 @@
       letter-spacing: 0.5px;
     }
 
-    .badge-express {
-      background-color: rgba(20, 184, 166, 0.1);
-      color: var(--accent-teal);
-      border: 1px solid rgba(20, 184, 166, 0.3);
+    .badge-discipline {
+      background-color: rgba(244, 63, 94, 0.1);
+      color: var(--accent-pink);
+      border: 1px solid rgba(244, 63, 94, 0.3);
     }
 
-    .badge-guide {
+    .badge-stress {
       background-color: rgba(56, 189, 248, 0.1);
       color: var(--accent-blue);
       border: 1px solid rgba(56, 189, 248, 0.3);
@@ -213,7 +189,7 @@
     .card-action {
       font-size: 0.85rem;
       font-weight: 600;
-      color: var(--accent-teal);
+      color: var(--accent-pink);
       margin-top: 4px;
     }
   </style>
@@ -221,72 +197,53 @@
 <body>
 
   <header>
-    <a href="index.html" class="back-btn">‹ Accueil</a>
+     <a href="../index.html" class="back-btn">‹ Accueil</a>
   </header>
 
   <main>
     <div>
-      <h1 class="page-title">Mobilité & Récupération Active</h1>
+      <h1 class="page-title">Mental & Motivation</h1>
       <p class="page-subtitle">
-        Débloquez vos articulations, éliminez la rigidité musculaire et réactivez votre circulation pour accélérer vos résultats.
+        Reprenez le contrôle de votre esprit pour éliminer l'autosabotage e construire une discipline sans souffrance.
       </p>
     </div>
 
-    <!-- EXPLICAÇÃO PARTE 1: POR QUE ESSE MÓDULO EXISTE -->
-    <div class="concept-card">
-      <div class="concept-title">
-        <span>🧘 Pourquoi la mobilité est indispensable ?</span>
-      </div>
-      <div class="concept-text">
-        <p>Un corps raide et contracté est un corps qui tourne au ralenti. Lorsque vos muscles restent sous tension permanente (heures assises, stress, entraînements répétitifs), la circulation sanguine diminue e l'inflammation s'installe.</p>
-        <br>
-        <p><strong>Travailler votre mobilité permet de :</strong></p>
-      </div>
-
-      <div class="benefits-grid">
-        <div class="benefit-item">
-          <strong>⚡ Brûler plus de calories</strong>
-          Des articulations libres permettent des mouvements plus amples et une plus grande dépense énergétique lors des séances.
-        </div>
-        <div class="benefit-item">
-          <strong>🛡️ Prévenir les blessures</strong>
-          Relâche la pression sur les vertèbres lombaires, le cou et les genoux.
-        </div>
-        <div class="benefit-item">
-          <strong>🌊 Réduire la rétention</strong>
-          Le mouvement doux stimule la circulation lymphatique e aide à dégonfler les jambes.
-        </div>
+    <!-- CARD EXPLICATIVO -->
+    <div class="mindset-card">
+      <div class="mindset-title">🧠 Le déclic mental : La discipline bat la motivation</div>
+      <div class="mindset-text">
+        <p>La motivation est éphémère : elle est là quand tout va bien, mais disparaît au premier signe de fatigue ou de stress. C'est la <strong>discipline douce</strong> e l'organisation de votre environnement qui garantissent vos résultats sur le long terme.</p>
       </div>
     </div>
 
-    <div class="section-header">Programmes & Guides Pratiques</div>
+    <div class="section-header">Guides & Stratégies Mentales</div>
 
     <div class="modules-list">
 
-      <!-- OPÇÃO 1: ROUTINE EXPRESS -->
-      <a href="deblocage-express.html" class="module-card">
-        <span class="card-badge badge-express">Routine 5 Min</span>
+      <!-- GUIA 1: DISCIPLINA E CONSTÂNCIA -->
+      <a href="discipline-constance.html" class="module-card">
+        <span class="card-badge badge-discipline">Guide Action</span>
         <div class="card-title">
-          <span>Déblocage Articulaire Express</span>
+          <span>Vaincre la Procrastination & Maintenir le Cap</span>
           <span>➔</span>
         </div>
         <p class="card-desc">
-          3 mouvements stratégiques à faire au bureau ou au réveil pour libérer le cou, les épaules et le bas du dos sans transpirer.
+          Comment dépasser les jours "sans envie", éviter l'effet du "tout ou rien" e sécuriser votre régularité sans culpabilité.
         </p>
-        <div class="card-action">Lancer la routine express ›</div>
+        <div class="card-action">Découvrir le guide ›</div>
       </a>
 
-      <!-- OPÇÃO 2: GUIA COMPLETO POSTURA E DORES -->
-      <a href="posture-anti-douleur.html" class="module-card">
-        <span class="card-badge badge-guide">Guide & Exercices</span>
+      <!-- GUIA 2: GESTÃO DE ESTRESSE E FOME EMOCIONAL -->
+      <a href="gestion-stress.html" class="module-card">
+        <span class="card-badge badge-stress">Équilibre Hormonal</span>
         <div class="card-title">
-          <span>Guide Anti-Douleur & Alignement</span>
+          <span>Gestion du Stress & Faim Émotionnelle</span>
           <span>➔</span>
         </div>
         <p class="card-desc">
-          Comprenez les causes du dos voûté, des douleurs lombaires et apprenez les exercices de décompression vertébrale.
+          Comprenez le lien entre l'anxiété, la sécrétion de cortisol e les envies compulsives de sucre pour désamorcer les fringales.
         </p>
-        <div class="card-action" style="color: var(--accent-blue);">Consulter le guide ›</div>
+        <div class="card-action" style="color: var(--accent-blue);">Consulter la méthode ›</div>
       </a>
 
     </div>
