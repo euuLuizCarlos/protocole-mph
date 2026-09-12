@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Accélérateur Métabolique 7X — Protocole MPH</title>
+  <style>
+    :root {
+      --bg-principal: #0d1117;
+      --bg-card: #161b22;
+      --border-color: #30363d;
+      --text-main: #f0f6fc;
+      --text-muted: #8b949e;
+      --accent-green: #22c55e;
+      --offer-gold: #f59e0b;
+      --accent-blue: #38bdf8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-principal);
+      color: var(--text-main);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    /* Topo */
+    header {
+      width: 100%;
+      max-width: 900px;
+      background-color: var(--bg-card);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      border-bottom: 1px solid var(--border-color);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .btn-back {
+      color: var(--accent-blue);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    /* Conteúdo Principal */
+    main {
+      width: 100%;
+      max-width: 900px;
+      padding: 16px;
+    }
+
+    .module-header {
+      background-color: var(--bg-card);
+      border: 2px solid var(--accent-green);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: var(--accent-green);
+      color: #000;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 4px 8px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .module-header h1 {
+      font-size: 1.5rem;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .module-header p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    /* Acordeões / Aulas */
+    .lessons-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    details {
+      background-color: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.2s ease;
+    }
+
+    details[open] {
+      border-color: var(--accent-green);
+    }
+
+    summary {
+      padding: 16px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: "＋";
+      color: var(--accent-green);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    details[open] summary::after {
+      content: "－";
+      color: var(--text-muted);
+    }
+
+    .lesson-content {
+      padding: 0 16px 20px 16px;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-main);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .lesson-content h3 {
+      color: var(--accent-green);
+      font-size: 1.05rem;
+      margin: 16px 0 8px 0;
+    }
+
+    .lesson-content ul, .lesson-content ol {
+      margin-left: 20px;
+      margin-bottom: 12px;
+    }
+
+    .lesson-content li {
+      margin-bottom: 8px;
+    }
+
+    .highlight-box {
+      background-color: rgba(34, 197, 94, 0.1);
+      border-left: 3px solid var(--accent-green);
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .gold-box {
+      background-color: rgba(245, 158, 11, 0.1);
+      border-left: 3px solid var(--offer-gold);
+      padding: 12px;
+      margin: 12px 0;
+      border-radius: 0 8px 8px 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Topo -->
+  <header>
+    <a href="../index.html" class="btn-back">← Retour</a>
+    <div class="brand">Accélérateur 7X</div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main>
+
+    <!-- Cabeçalho do Módulo -->
+    <div class="module-header">
+      <span class="badge">Programme 21 Jours</span>
+      <h1>Accélérateur Métabolique 7X</h1>
+      <p>Le rituel matinal de 2 minutes pour neutraliser le cortisol, réactiver l'insuline et multiplier par 7 la vitesse de déstockage de la graisse abdominale.</p>
+    </div>
+
+    <!-- Lista de Aulas / Acordeões -->
+    <div class="lessons-accordion">
+
+      <!-- LEÇON 1 -->
+      <details open>
+        <summary>Leçon 1 : Bienvenue & Les 3 Règles d'Or</summary>
+        <div class="lesson-content">
+          <p>Félicitations ! Vous venez d'activer votre protocole d'accélération. À partir d'aujourd'hui, vous éteignez la trappe métabolique interne qui bloquait votre perte de poids au réveil.</p>
+          
+          <div class="highlight-box">
+            <strong>Les 3 Règles d'Or du Protocole :</strong>
+          </div>
+          <ul>
+            <li><strong>Règle #1 : Le Rituel à Jeun.</strong> Le breuvage de 2 minutes doit être consommé dès votre lever, l'estomac totalement vide.</li>
+            <li><strong>Règle #2 : La Synergie Gel MPH.</strong> Appliquez votre Gel MPH sur la sangle abdominale 10 à 15 minutes après avoir bu votre mélange matinal.</li>
+            <li><strong>Règle #3 : La Fenêtre de 30 Minutes.</strong> Aucun aliment solide, café sucré ou jus de fruits pendant les 30 minutes qui suivent le rituel.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- LEÇON 2 -->
+      <details>
+        <summary>Leçon 2 : La Formule du Breuvage Express (2 Min)</summary>
+        <div class="lesson-content">
+          <p>Cette combinaison précise de 4 ingrédients ordinaires agit comme un disjoncteur hormonal matinal : elle stoppe immédiatement le pic de cortisol et force votre insuline à chuter.</p>
+          
+          <h3>Les 4 Ingrédients Clés :</h3>
+          <ol>
+            <li><strong>200 ml d'eau tiède</strong> (favorise l'assimilation rapide par la muqueuse).</li>
+            <li><strong>Le jus de 1/2 citron frais</strong> (activation des enzymes digestives).</li>
+            <li><strong>1 cuillère à café de Vinaigre de Cidre Bio non filtré</strong> (le bloqueur d'insuline naturel).</li>
+            <li><strong>1 pincée de Piment de Cayenne ou Gingembre moulu</strong> (déclencheur thermogénique).</li>
+          </ol>
+
+          <div class="highlight-box">
+            <strong>Mode de Préparation :</strong><br>
+            Dans un grand verre, mélangez l'eau tiède avec le vinaigre de cidre et le jus de citron. Ajoutez la pincée de piment de cayenne ou de gingembre. Mélangez à la cuillère et buvez immédiatement d'un trait à jeun.
+          </div>
+        </div>
+      </details>
+
+      <!-- LEÇON 3 -->
+      <details>
+        <summary>Leçon 3 : Le Plan d'Attaque de 21 Jours</summary>
+        <div class="lesson-content">
+          <p>Suivez ce calendrier pas-à-pas pour maximiser vos résultats semaine après semaine :</p>
+          
+          <h3>Phase 1 : Déblocage (Jours 1 à 7)</h3>
+          <ul>
+            <li>Rituel matinal de 2 minutes tous les jours au réveil.</li>
+            <li>Application unique du Gel MPH le matin.</li>
+            <li>Suppression totale des sucres liquides au petit-déjeuner.</li>
+          </ul>
+
+          <h3>Phase 2 : Déstockage Massif (Jours 8 à 14)</h3>
+          <ul>
+            <li>Rituel matinal de 2 minutes au réveil.</li>
+            <li>Double application du Gel MPH (Matin après le rituel + Soir avant le coucher).</li>
+            <li>Hydratation renforcée (2,5 litres d'eau par jour).</li>
+          </ul>
+
+          <h3>Phase 3 : Consolidation & Fermeté (Jours 15 à 21)</h3>
+          <ul>
+            <li>Maintien du rituel matinal.</li>
+            <li>Massage fermeté 3 minutes lors de l'application du Gel MPH.</li>
+            <li>Mesure finale de la taille et pesée le 21ème jour.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- LEÇON 4 -->
+      <details>
+        <summary>Leçon 4 : Liste de Courses Express</summary>
+        <div class="lesson-content">
+          <p>Imprimez ou prenez en capture cette liste pour votre prochaine visite au supermarché (E.Leclerc, Carrefour, Monoprix ou Lidl) :</p>
+          
+          <ul>
+            <li>✅ <strong>Citrons jaunes ou verts frais</strong> (évitez les jus industriels en bouteille plastique).</li>
+            <li>✅ <strong>Vinaigre de Cidre Bio</strong> (Mention obligatoire : <em>"Non filtré, non pasteurisé"</em> avec la mère de vinaigre).</li>
+            <li>✅ <strong>Piment de Cayenne moulu</strong> ou <strong>Gingembre en poudre Bio</strong>.</li>
+            <li>✅ <strong>Eau minérale ou filtrée</strong> pauvre en sodium.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- LEÇON 5 (BONUS) -->
+      <details>
+        <summary>Leçon 5 (Bonus) : Adieu Cellulite & Relâchement</summary>
+        <div class="lesson-content">
+          <div class="gold-box">
+            <strong>GUIDE EXCLUSIF FERMETÉ & DRAINAGE</strong>
+          </div>
+          <p>Votre technique complémentaire pour éliminer l'aspect peau d'orange et raffermir les tissus en 21 jours.</p>
+          
+          <h3>La Technique du Palper-Rouler Express (3 Minutes) :</h3>
+          <p>Juste après avoir appliqué le Gel MPH sur votre ventre, vos cuisses ou vos hanches :</p>
+          <ol>
+            <li>Pincez un pli de peau entre vos pouces et vos index.</li>
+            <li>Faites rouler ce pli du bas vers le haut (toujours en direction du cœur pour stimuler le drainage lymphatique).</li>
+            <li>Répétez le mouvement pendant 3 minutes par zone.</li>
+          </ol>
+          <p><em>Cette technique brise la capsule fibreuse des capitons de graisse et accélère la pénétration des actifs du Gel MPH.</em></p>
+        </div>
+      </details>
+
+    </div>
+  </main>
+
+</body>
+</html>
