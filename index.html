@@ -4,6 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>InfoApp - Protocole MPH</title>
+
+  <!-- CONFIGURAÇÕES PWA -->
+  <link rel="manifest" href="/manifest.json" />
+  <meta name="theme-color" content="#0d1117" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Protocole MPH" />
+  <link rel="apple-touch-icon" href="/icon-192.png" />
+
   <style>
     :root {
       --bg-principal: #0d1117;
@@ -221,7 +230,106 @@
       color: var(--accent-green);
     }
 
-    /* Ajustement pour très petits écrans */
+    /* ESTILOS DO POP-UP PWA */
+    .pwa-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .pwa-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .pwa-modal {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 24px 24px 0 0;
+      padding: 24px 20px;
+      width: 100%;
+      max-width: 500px;
+      text-align: center;
+      box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.5);
+      animation: slideUp 0.3s ease;
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to { transform: translateY(0); }
+    }
+
+    .pwa-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 16px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-color);
+    }
+
+    .pwa-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .pwa-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .pwa-btn {
+      width: 100%;
+      background-color: var(--accent-green);
+      color: #000;
+      border: none;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .pwa-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .ios-steps {
+      text-align: left;
+      background: var(--bg-principal);
+      padding: 14px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      font-size: 0.85rem;
+      border: 1px solid var(--border-color);
+    }
+
+    .ios-steps li {
+      margin-left: 20px;
+      margin-bottom: 6px;
+      color: var(--text-main);
+    }
+
     @media (max-width: 380px) {
       .modules-grid {
         grid-template-columns: 1fr 1fr;
@@ -352,6 +460,91 @@
 
     </div>
   </main>
+
+  <!-- OVERLAY / POP-UP DE INSTALAÇÃO PWA -->
+  <div id="pwaOverlay" class="pwa-overlay">
+    <div class="pwa-modal">
+      <img src="icon-192.png" alt="App Icon" class="pwa-icon" />
+      <div class="pwa-title">Installez l'Application Protocole MPH</div>
+      <div class="pwa-desc">
+        Ne perdez pas votre accès ! Ajoutez l'application à l'écran d'accueil de votre téléphone pour y accéder facilement tous les jours.
+      </div>
+
+      <!-- Guia Android -->
+      <div id="androidBox" style="display: none;">
+        <button id="pwaInstallBtn" class="pwa-btn">INSTALLER EN 1 CLIC</button>
+      </div>
+
+      <!-- Guia iOS (iPhone) -->
+      <div id="iosBox" style="display: none;">
+        <ol class="ios-steps">
+          <li>Touchez le bouton de <strong>Partage</strong> (l'icône carrée avec une flèche en bas de l'écran ⎋).</li>
+          <li>Faites défiler vers le bas et cliquez sur <strong>Sur l'écran d'accueil</strong> ⊕.</li>
+        </ol>
+        <button onclick="closePWA()" class="pwa-btn">J'AI COMPRIS</button>
+      </div>
+
+      <button onclick="closePWA()" class="pwa-close">Continuer vers le site web</button>
+    </div>
+  </div>
+
+  <!-- SCRIPT PWA & SERVICE WORKER -->
+  <script>
+    // Registrar Service Worker
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js')
+        .then(() => console.log('Service Worker Registrado'))
+        .catch(err => console.log('Erro ao registrar SW:', err));
+    }
+
+    let deferredPrompt;
+    const overlay = document.getElementById('pwaOverlay');
+    const androidBox = document.getElementById('androidBox');
+    const iosBox = document.getElementById('iosBox');
+    const installBtn = document.getElementById('pwaInstallBtn');
+
+    // Detectar dispositivo
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+
+    // Mostrar Pop-up se não estiver instalado
+    window.addEventListener('load', () => {
+      if (!isStandalone) {
+        if (isIOS) {
+          iosBox.style.display = 'block';
+          overlay.classList.add('active');
+        }
+      }
+    });
+
+    // Capturar evento de instalação no Android/Chrome
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      if (!isStandalone) {
+        androidBox.style.display = 'block';
+        overlay.classList.add('active');
+      }
+    });
+
+    // Ação do Botão de Instalar (Android)
+    if (installBtn) {
+      installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          const { outcome } = await deferredPrompt.userChoice;
+          if (outcome === 'accepted') {
+            closePWA();
+          }
+          deferredPrompt = null;
+        }
+      });
+    }
+
+    function closePWA() {
+      overlay.classList.remove('active');
+    }
+  </script>
 
 </body>
 </html>
